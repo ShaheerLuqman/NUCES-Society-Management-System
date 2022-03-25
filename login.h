@@ -8,8 +8,8 @@
 using namespace std;
 int login()
 {
-    int choice, status, contact_number, faculty_year;
-    float cgpa;
+    int choice, status, faculty_year;
+    float contact_number, cgpa;
     string name, password, inName, inPassword, registerName, registerPassword, registerRePassword,
         std_id, email, gender, alumni_academic, occupation, department, job, alumni_graduation, teacher_id;
 
