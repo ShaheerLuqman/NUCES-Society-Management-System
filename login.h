@@ -26,7 +26,7 @@ int login()
         }
         else if (choice == 1) // Register
         {
-            ofstream g("registration.txt"); /* ofstream is the one for getting data from the file, and the file does not even have to exist. 
+            ofstream g("registration.txt"); /* ofstream is the one for getting data from the file, and the file does not even have to exist.
                                                 If it's ofstream, it'll take care of it for you. but be warned that if there is a file called "registration.txt"
                                                 in the name folder as the .exe file, the contents will be deleted*/
             if (!g.is_open())               // if it's not open, then there is no such file with the given name inside

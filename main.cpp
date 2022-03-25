@@ -19,63 +19,8 @@ To be done later:
 #include <iomanip>
 #include <fstream>
 #include "login.h"
+#include "date&time.h"
 using namespace std;
-
-void menu()
-{
-    int choice;
-    system("cls");
-    cout << "Welcome to Nuces Society Management System";
-    cout << "\nPress\n"
-         << "   1. Log In or Register\n"
-         // << "   2. Login\n"
-         << "   0. Exit\n"
-         << "Your Input: ";
-    cin >> choice;
-    if (choice == 0)
-    {
-        exit(EXIT_SUCCESS);
-    }
-    else if (choice == 1)
-    {
-        system("cls");
-        login();
-    }
-};
-
-class date
-{
-private:
-    int day;
-    int month;
-    int year;
-
-public:
-    void setDay(int temp) { day = temp; }
-    void setMonth(int temp) { month = temp; }
-    void setYear(int temp) { year = temp; }
-    int getDay() { return day; }
-    int getMonth() { return month; }
-    int getYear() { return year; }
-    void DisplayDate()
-    {
-        cout << setfill('0') << setw(2) << day << "/" << setfill('0') << setw(2) << month << "/" << setfill('0') << setw(4) << year;
-    }
-};
-
-class Time
-{
-private:
-    int hr;
-    int min;
-
-public:
-    void setHour(int temp) { hr = temp; }
-    void setMinutes(int temp) { min = temp; }
-    int getHour() { return hr; }
-    int getMinutes() { return min; }
-    void DisplayTime(){}; // Time class display function has to be completed
-};
 
 class Account
 {
@@ -103,7 +48,7 @@ private:
 public:
 };
 
-class Events // Inherited classes will be past events and future events
+class Events
 {
 private:
     string Event_name;
@@ -112,8 +57,54 @@ private:
     Time Start_time;
     date End_date;
     Time End_time;
+    string Event_Status; // past, Ongoing or Future. It will be determined not taken as input
 
-public: // Functions are to be made
+public:
+    void getEventData()
+    {
+        cout << "-----------------------------\n"
+             << "Enter Event Details\n"
+             << "-----------------------------\n";
+        cout << "Enter Event Name : ";
+        cin >> Event_name;
+        cout << "Enter Event Description : ";
+        cin >> Event_Description;
+        cout << "-----------------------------\n";
+        cout << "Enter Event Starting Date\n";
+        cout << "-----------------------------\n";
+        Start_date.inputDate();
+        cout << "-----------------------------\n";
+        cout << "Enter Event Starting Time\n";
+        cout << "-----------------------------\n";
+        Start_time.inputTime();
+        cout << "-----------------------------\n";
+        cout << "Enter Event Ending Date\n";
+        cout << "-----------------------------\n";
+        End_date.inputDate();
+        cout << "-----------------------------\n";
+        cout << "Enter Event Ending Time\n";
+        cout << "-----------------------------\n";
+        End_time.inputTime();
+        cout << "-----------------------------\n";
+    }
+
+    void DisplayEventData()
+    {
+        cout << "Event Name : " << Event_name << endl
+             << "Event Description :" << Event_Description << endl;
+        cout << "Event Start Date :";
+        Start_date.DisplayDate();
+        cout << endl
+             << "Event End Date : ";
+        End_date.DisplayDate();
+        cout << endl
+             << "Event Start Time : ";
+        Start_time.DisplayTime();
+        cout << endl
+             << "Event End Time : ";
+        End_time.DisplayTime();
+        cout << endl;
+    }
 };
 
 class Society
@@ -122,15 +113,39 @@ private:
     string Society_Name;
     string Society_Description;
     int Number_Of_Events;
-    Events events[1];  // value to be modified according to number of events
-    Member members[1]; // value to be modified according to number of members
+    Events *events;
+    Member *members;
 
 public:
 };
 
 int main()
 {
-    menu();
+    int choice;
+    system("cls");
+    cout << "Welcome to Nuces Society Management System";
+    cout << "\nPress\n"
+         << "   1. Log In or Register\n"
+         << "   2. Enter an Event\n"
+         << "   0. Exit\n"
+         << "Your Input: ";
+    cin >> choice;
+    if (choice == 0)
+    {
+        exit(EXIT_SUCCESS);
+    }
+    else if (choice == 1)
+    {
+        system("cls");
+        login();
+    }
+    else if (choice == 2)
+    {
+        Events event;
+        event.getEventData();
+        event.DisplayEventData();
+    }
+
     return 0;
 }
 
