@@ -9,9 +9,10 @@ using namespace std;
 int login()
 {
     int choice, status, faculty_year;
-    float contact_number, cgpa;
-    string name, password, inName, inPassword, registerName, registerPassword, registerRePassword,
-        std_id, email, gender, alumni_academic, occupation, department, job, alumni_graduation, teacher_id;
+    long long int contact_number;
+    float cgpa;
+    string name, password, inName, inPassword, registerName, registerPassword, registerRePassword, designation,
+        std_id, email, gender, alumni_academic, occupation, department, job, alumni_graduation, faculty_id;
 
     while (1)
     {
@@ -45,16 +46,16 @@ int login()
             fflush(stdin);
             getline(cin, email);
             cout << "Contact Number: ";
-            cin >> contact_number; // have to check data type of number.
+            cin >> contact_number;
             cout << "Gender: ";
             fflush(stdin);
             getline(cin, gender);
             //            cout<<"Society: ";
             //            getline(cin,society);
             cout << "Status: " << endl;
-            cout << "Press" << endl
-                 << "1.Student\n" // have to pass control to desired choice
-                 << "2.Faculty member\n"
+            cout << "Enter your number" << endl
+                 << "1.Student\n"
+                 << "2.Faculty\n"
                  << "3.Alumni\n";
 
             cin >> status;
@@ -64,19 +65,19 @@ int login()
                 fflush(stdin);
                 getline(cin, std_id);
                 cout << "CGPA: ";
-                cin >> cgpa; // do we have to impose restriction on below 2 cgpa?
+                cin >> cgpa;
                 cout << "Department: ";
                 fflush(stdin);
                 getline(cin, department);
             }
             else if (status == 2)
             {
-                cout << "Teacher ID (e.g: 21K-XXXX): ";
+                cout << "Faculty ID (e.g: 21K-XXXX): ";
                 fflush(stdin);
-                getline(cin, teacher_id);
-                cout << "Occupation: "; // occupation or designation
+                getline(cin, faculty_id);
+                cout << "designation: ";
                 fflush(stdin);
-                getline(cin, occupation);
+                getline(cin, designation);
                 cout << "Workin since: (year)";
                 cin >> faculty_year;
                 cout << "Department: ";
@@ -89,7 +90,7 @@ int login()
                 fflush(stdin);
                 getline(cin, std_id);
                 cout << "CGPA: ";
-                cin >> cgpa; // do we have to impose restriction on below 2 cgpa?
+                cin >> cgpa;
                 cout << "Graduation department: ";
                 fflush(stdin);
                 getline(cin, alumni_graduation);
