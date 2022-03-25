@@ -123,29 +123,31 @@ int main()
 {
     int choice;
     system("cls");
-    cout << "Welcome to Nuces Society Management System";
-    cout << "\nPress\n"
-         << "   1. Log In or Register\n"
-         << "   2. Enter an Event\n"
-         << "   0. Exit\n"
-         << "Your Input: ";
-    cin >> choice;
-    if (choice == 0)
+    while (1)
     {
-        exit(EXIT_SUCCESS);
+        cout << "Welcome to Nuces Society Management System";
+        cout << "\nPress\n"
+             << "   1. Log In or Register\n"
+             << "   2. Enter an Event\n"
+             << "   0. Exit\n"
+             << "Your Input: ";
+        cin >> choice;
+        if (choice == 0)
+        {
+            exit(EXIT_SUCCESS);
+        }
+        else if (choice == 1)
+        {
+            system("cls");
+            login();
+        }
+        else if (choice == 2)
+        {
+            Events event;
+            event.getEventData();
+            event.DisplayEventData();
+        }
     }
-    else if (choice == 1)
-    {
-        system("cls");
-        login();
-    }
-    else if (choice == 2)
-    {
-        Events event;
-        event.getEventData();
-        event.DisplayEventData();
-    }
-
     return 0;
 }
 

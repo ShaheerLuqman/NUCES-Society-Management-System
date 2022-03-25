@@ -25,7 +25,7 @@ int login()
 
         if (choice == 0)
         {
-            exit(EXIT_SUCCESS);
+            return 0;
         }
         else if (choice == 1) // Register
         {
