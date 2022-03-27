@@ -1,6 +1,7 @@
+#include <ctime>
 using namespace std;
 
-class date
+class Date
 {
 private:
     int day;
@@ -90,6 +91,27 @@ public:
     int getMinutes() { return min; }
     void DisplayTime() { cout << setfill('0') << setw(2) << hr << ":" << setfill('0') << setw(2) << min; };
 };
+
+void CurrentDateTime()
+{
+    Time currentTime;
+    Date currentDate;
+    time_t t = time(NULL);
+    tm *timePtr = localtime(&t);
+    currentTime.setHour(timePtr->tm_hour);
+    currentTime.setMinutes(timePtr->tm_min);
+
+    currentDate.setDay(timePtr->tm_mday);
+    currentDate.setMonth((timePtr->tm_mon) + 1);
+    currentDate.setYear((timePtr->tm_year) + 1900);
+
+    cout << "Date     ";
+    currentDate.DisplayDate();
+    cout << endl;
+    cout << "Time     ";
+    currentTime.DisplayTime();
+    cout << endl;
+}
 
 /*
 #include <iostream>

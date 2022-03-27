@@ -53,9 +53,9 @@ class Events
 private:
     string Event_name;
     string Event_Description;
-    date Start_date;
+    Date Start_date;
     Time Start_time;
-    date End_date;
+    Date End_date;
     Time End_time;
     string Event_Status; // past, Ongoing or Future. It will be determined not taken as input
 
@@ -129,6 +129,7 @@ int main()
         cout << "\nPress\n"
              << "   1. Log In or Register\n"
              << "   2. Enter an Event\n"
+             << "   3. Current Date And Time\n"
              << "   0. Exit\n"
              << "Your Input: ";
         cin >> choice;
@@ -146,6 +147,10 @@ int main()
             Events event;
             event.getEventData();
             event.DisplayEventData();
+        }
+        else if (choice == 3)
+        {
+            CurrentDateTime();
         }
     }
     return 0;
