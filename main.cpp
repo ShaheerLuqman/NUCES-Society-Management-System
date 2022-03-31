@@ -18,35 +18,9 @@ To be done later:
 #include <string>
 #include <iomanip>
 #include <fstream>
-#include "login.h"
+#include "register&login.h"
 #include "date&time.h"
 using namespace std;
-
-class Account
-{
-private:
-    string Full_Name;
-    int Age;
-    string username;
-    string password;
-    string type;              // e.g student, faculty, head, society head, director, visitor
-    bool Modification_rights; // head, society head, director can apply
-    string id;
-
-public:
-    void setName(string temp) { Full_Name = temp; }
-    void setAge(int temp) { Age = temp; }
-    string getName() { return Full_Name; }
-    int getAge() { return Age; }
-};
-
-class Member : public Account
-{
-private:
-    string Member_Role;
-
-public:
-};
 
 class Events
 {
