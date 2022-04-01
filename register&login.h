@@ -10,19 +10,139 @@ using namespace std;
 class Account
 {
 private:
-    string Full_Name;
+    string Full_Name, username, password, status, email, gender; // e.g student, faculty, head, society head, director, visitor
+    bool Modification_rights;                                    // head, society head, director can apply
     int Age;
-    string username;
-    string password;
-    string type;              // e.g student, faculty, head, society head, director, visitor
-    bool Modification_rights; // head, society head, director can apply
-    string id;
+    long long int contact_number;
+
+    float cgpa;
+    string designation, std_id, alumni_academic, occupation, department, job, alumni_graduation, faculty_id;
 
 public:
     void setName(string temp) { Full_Name = temp; }
     void setAge(int temp) { Age = temp; }
     string getName() { return Full_Name; }
     int getAge() { return Age; }
+    void Account_register()
+    {
+        int choice;
+        cout << "\n********** Account Register **********\n"
+             << "New Username: ";
+        fflush(stdin);
+        getline(cin, username);
+        cout << "E-mail Address: ";
+        fflush(stdin);
+        getline(cin, email);
+        cout << "Contact Number: ";
+        cin >> contact_number;
+        cout << "Gender: ";
+        fflush(stdin);
+        getline(cin, gender);
+        cout << "Status: " << endl;
+        cout << "Enter your number" << endl
+             << "1.Student\n"
+             << "2.Faculty\n"
+             << "3.Alumni\n";
+        cin >> choice;
+        if (choice == 1)
+        {
+            status = "Student";
+        }
+        else if (choice == 2)
+        {
+            status = "Faculty";
+        }
+        else if (choice == 3)
+        {
+            status = "Alumni";
+        }
+        cout << "New Password: ";
+        fflush(stdin);
+        getline(cin, password);
+        string registerRePassword;
+        cout << "Re-enter Password: ";
+        fflush(stdin);
+        getline(cin, registerRePassword);
+        if (password == registerRePassword)
+        {
+            cout << "Values Inserted Successfuly";
+        }
+        else
+        {
+            cout << "Password not matched.";
+        }
+    };
+};
+
+class Student : public Account
+{
+private:
+    string std_id;
+    float cgpa;
+    string department;
+
+public:
+    void Account_register()
+    {
+        Account::Account_register();
+        cout << "Student ID (e.g: 21K-XXXX): ";
+        fflush(stdin);
+        getline(cin, std_id);
+        cout << "CGPA: ";
+        cin >> cgpa;
+        cout << "Department: ";
+        fflush(stdin);
+        getline(cin, department);
+    };
+};
+class Faculty : public Account
+{
+private:
+    string faculty_id, designation, department;
+    int Joining_year;
+
+public:
+    void Account_register()
+    {
+        Account::Account_register();
+        cout << "Faculty ID (e.g: 21K-XXXX): ";
+        fflush(stdin);
+        getline(cin, faculty_id);
+        cout << "designation: ";
+        fflush(stdin);
+        getline(cin, designation);
+        cout << "Workin since: (year)";
+        cin >> Joining_year;
+        cout << "Department: ";
+        fflush(stdin);
+        getline(cin, department);
+    };
+};
+class Alumni : public Account
+{
+private:
+    string std_id, alumni_graduation, alumni_academic, job;
+    float cgpa;
+
+public:
+    void Account_register()
+    {
+        Account::Account_register();
+        cout << "Student ID (e.g: 21K-XXXX): ";
+        fflush(stdin);
+        getline(cin, std_id);
+        cout << "CGPA: ";
+        cin >> cgpa;
+        cout << "Graduation department: ";
+        fflush(stdin);
+        getline(cin, alumni_graduation);
+        cout << "Current Academic program (if enrolled in any): ";
+        fflush(stdin);
+        getline(cin, alumni_academic);
+        cout << "Current job: (if any)";
+        fflush(stdin);
+        getline(cin, job);
+    };
 };
 
 class Member : public Account
@@ -34,7 +154,7 @@ public:
 };
 int login()
 {
-    int choice, faculty_year;
+    int choice, Joining_year;
     long long int contact_number;
     float cgpa;
     string name, password, inName, inPassword, registerName, registerPassword, registerRePassword, designation,
@@ -117,7 +237,7 @@ int login()
                 fflush(stdin);
                 getline(cin, designation);
                 cout << "Workin since: (year)";
-                cin >> faculty_year;
+                cin >> Joining_year;
                 cout << "Department: ";
                 fflush(stdin);
                 getline(cin, department);
@@ -161,7 +281,7 @@ int login()
                     g << std_id << ',' << cgpa << ',' << department;
 
                 else if (status == "Faculty")
-                    g << faculty_id << ',' << designation << ',' << faculty_year << ',' << department;
+                    g << faculty_id << ',' << designation << ',' << Joining_year << ',' << department;
 
                 else if (status == "Alumni")
                     g << std_id << ',' << cgpa << ',' << alumni_graduation << ',' << alumni_academic << ',' << job;
