@@ -30,32 +30,6 @@ public:
              << "New Username: ";
         fflush(stdin);
         getline(cin, username);
-        cout << "E-mail Address: ";
-        fflush(stdin);
-        getline(cin, email);
-        cout << "Contact Number: ";
-        cin >> contact_number;
-        cout << "Gender: ";
-        fflush(stdin);
-        getline(cin, gender);
-        cout << "Status: " << endl;
-        cout << "Enter your number" << endl
-             << "1.Student\n"
-             << "2.Faculty\n"
-             << "3.Alumni\n";
-        cin >> choice;
-        if (choice == 1)
-        {
-            status = "Student";
-        }
-        else if (choice == 2)
-        {
-            status = "Faculty";
-        }
-        else if (choice == 3)
-        {
-            status = "Alumni";
-        }
         cout << "New Password: ";
         fflush(stdin);
         getline(cin, password);
@@ -65,12 +39,29 @@ public:
         getline(cin, registerRePassword);
         if (password == registerRePassword)
         {
-            cout << "Values Inserted Successfuly";
+            cout << "Values Inserted Successfuly" << endl;
         }
         else
         {
-            cout << "Password not matched.";
+            cout << "Password not matched." << endl;
         }
+        cout << "E-mail Address: ";
+        fflush(stdin);
+        getline(cin, email);
+        cout << "Contact Number: ";
+        cin >> contact_number;
+        cout << "Gender: ";
+        fflush(stdin);
+        getline(cin, gender);
+    };
+    void DisplayAccountData()
+    {
+        cout << "\nObect readed completely\n"
+             << "\nUsername: " << username
+             << "\nPassword: " << password
+             << "\nE-mail Address: " << email
+             << "\nContact Number: " << contact_number
+             << "\nGender: " << gender;
     };
 };
 
@@ -94,6 +85,13 @@ public:
         fflush(stdin);
         getline(cin, department);
     };
+    void DisplayAccountData()
+    {
+        Account::DisplayAccountData();
+        cout << "\nStudent ID: " << std_id
+             << "\nCGPA: " << cgpa
+             << "\nDepartment: " << department;
+    };
 };
 class Faculty : public Account
 {
@@ -108,14 +106,22 @@ public:
         cout << "Faculty ID (e.g: 21K-XXXX): ";
         fflush(stdin);
         getline(cin, faculty_id);
-        cout << "designation: ";
+        cout << "Designation: ";
         fflush(stdin);
         getline(cin, designation);
-        cout << "Workin since: (year)";
+        cout << "Working since: (year)";
         cin >> Joining_year;
         cout << "Department: ";
         fflush(stdin);
         getline(cin, department);
+    };
+    void DisplayAccountData()
+    {
+        Account::DisplayAccountData();
+        cout << "\nFaculty ID: " << faculty_id
+             << "\nDesignation: " << designation
+             << "\nWorking since: " << Joining_year
+             << "\nDepartment: " << department;
     };
 };
 class Alumni : public Account
@@ -143,6 +149,15 @@ public:
         fflush(stdin);
         getline(cin, job);
     };
+    void DisplayAccountData()
+    {
+        Account::DisplayAccountData();
+        cout << "\nStudent ID: " << std_id
+             << "\nCGPA: " << cgpa
+             << "\nGraduation department: " << alumni_graduation
+             << "\nCurrent Academic program: " << alumni_academic
+             << "\nCurrent job: " << job;
+    };
 };
 
 class Member : public Account
@@ -154,11 +169,9 @@ public:
 };
 int login()
 {
-    int choice, Joining_year;
-    long long int contact_number;
-    float cgpa;
-    string name, password, inName, inPassword, registerName, registerPassword, registerRePassword, designation,
-        std_id, status, email, gender, alumni_academic, occupation, department, job, alumni_graduation, faculty_id;
+    int choice;
+
+    string name, password, inName, inPassword;
 
     while (1)
     {
@@ -175,29 +188,13 @@ int login()
         }
         else if (choice == 1) // Register
         {
-            ofstream g("registration.txt", std::ios_base::app); /* ofstream is the one for getting data from the file, and the file does not even have to exist.
-                                                If it's ofstream, it'll take care of it for you. but be warned that if there is a file called "registration.txt"
-                                                in the name folder as the .exe file, the contents will be deleted*/
-            if (!g.is_open())                                   // if it's not open, then there is no such file with the given name inside
+            ofstream g("registration.txt", std::ios_base::app);
+            if (!g.is_open()) // if it's not open, then there is no such file with the given name inside
             {
                 cout << "could not open file\n";
                 exit(EXIT_FAILURE);
             }
 
-            cout << "\n********** Account Register **********\n"
-                 << "New Username: ";
-            fflush(stdin);
-            getline(cin, registerName);
-            cout << "E-mail Address: ";
-            fflush(stdin);
-            getline(cin, email);
-            cout << "Contact Number: ";
-            cin >> contact_number;
-            cout << "Gender: ";
-            fflush(stdin);
-            getline(cin, gender);
-            //            cout<<"Society: ";
-            //            getline(cin,society);
             cout << "Status: " << endl;
             cout << "Enter your number" << endl
                  << "1.Student\n"
@@ -206,105 +203,31 @@ int login()
             cin >> choice;
             if (choice == 1)
             {
-                status = "Student";
+                ofstream g("registration.txt", std::ios_base::app);
+                Student std;
+                std.Account_register();
+                g.write((char *)&std, sizeof(std));
+
+                ifstream f("registration.txt", ios::in);
+                Student std1;
+                f.read((char *)&std1, sizeof(std1));
+                std1.DisplayAccountData();
             }
             else if (choice == 2)
             {
-                status = "Faculty";
+                // for Faculty
             }
             else if (choice == 3)
             {
-                status = "Alumni";
-            }
-
-            if (status == "Student")
-            {
-                cout << "Student ID (e.g: 21K-XXXX): ";
-                fflush(stdin);
-                getline(cin, std_id);
-                cout << "CGPA: ";
-                cin >> cgpa;
-                cout << "Department: ";
-                fflush(stdin);
-                getline(cin, department);
-            }
-            else if (status == "Faculty")
-            {
-                cout << "Faculty ID (e.g: 21K-XXXX): ";
-                fflush(stdin);
-                getline(cin, faculty_id);
-                cout << "designation: ";
-                fflush(stdin);
-                getline(cin, designation);
-                cout << "Workin since: (year)";
-                cin >> Joining_year;
-                cout << "Department: ";
-                fflush(stdin);
-                getline(cin, department);
-            }
-            else if (status == "Alumni")
-            {
-                cout << "Student ID (e.g: 21K-XXXX): ";
-                fflush(stdin);
-                getline(cin, std_id);
-                cout << "CGPA: ";
-                cin >> cgpa;
-                cout << "Graduation department: ";
-                fflush(stdin);
-                getline(cin, alumni_graduation);
-                cout << "Current Academic program (if enrolled in any): ";
-                fflush(stdin);
-                getline(cin, alumni_academic);
-                cout << "Current job: (if any)";
-                fflush(stdin);
-                getline(cin, job);
-            }
-            cout << "New Password: ";
-            fflush(stdin);
-            getline(cin, registerPassword);
-            cout << "Re-enter Password: ";
-            fflush(stdin);
-            getline(cin, registerRePassword);
-            if (registerPassword == registerRePassword)
-            {
-                g << registerName;
-                g << '\n';
-                g << registerPassword;
-                g << '\n';
-                g << contact_number;
-                g << '\n';
-                g << gender;
-                g << '\n';
-                g << status;
-                g << '\n';
-                if (status == "Student")
-                    g << std_id << ',' << cgpa << ',' << department;
-
-                else if (status == "Faculty")
-                    g << faculty_id << ',' << designation << ',' << Joining_year << ',' << department;
-
-                else if (status == "Alumni")
-                    g << std_id << ',' << cgpa << ',' << alumni_graduation << ',' << alumni_academic << ',' << job;
-
-                g << '\n';
-                g << ';';
-                g << '\n';
-                g.close();
-            }
-            else
-            {
-                cout << "Password not matched.";
-                // control back to re-enter password.
+                // for Alumni
             }
         }
         else if (choice == 2) // Login
         {
-            ifstream f("registration.txt"); // ifstream is the one for getting data from the file, and
-            // let us assume you've already created a file called "registration.txt"
-            if (!f.is_open()) // if it's not open, then there is no such file with the given name inside
-            // the folder (that is, in the folder where the .exe file is going to be)
+            ifstream f("registration.txt");
+            if (!f.is_open())
             {
-                cout << "could not open file\n"; // just so that you know why it won't work if it doesn't
+                cout << "could not open file\n";
                 exit(EXIT_FAILURE);
             }
 
