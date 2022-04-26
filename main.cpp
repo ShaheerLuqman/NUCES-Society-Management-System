@@ -20,6 +20,7 @@ To be done later:
 #include <fstream>
 #include "register&login.h"
 #include "date&time.h"
+#include "visitor_menu.h"
 using namespace std;
 
 class Events
@@ -103,6 +104,7 @@ int main()
              << "   1. Log In or Register\n"
              << "   2. Enter an Event\n"
              << "   3. Current Date And Time\n"
+             << "   4. Continue as Guest\n"
              << "   0. Exit\n"
              << "Your Input: ";
         cin >> choice;
@@ -124,6 +126,11 @@ int main()
         else if (choice == 3)
         {
             CurrentDateTime();
+        }
+        else if (choice == 4)
+        {
+            cout << "Welcome Visitor!";
+            visitor_menu();
         }
     }
     return 0;

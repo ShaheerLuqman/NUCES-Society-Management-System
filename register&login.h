@@ -136,7 +136,6 @@ int login()
         cout << "Press\n"
              << "   1. Register\n"
              << "   2. Login\n"
-             << "   3. Continue as Guest\n"
              << "   0. Exit\n"
              << "Your Input: ";
         cin >> choice;
