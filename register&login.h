@@ -1,6 +1,4 @@
 /*
-    ● Option for accounts registered to remain saved
-    ● New Questions for account register
     ● Copy data to local variables when Account logs in
     ● https://www.geeksforgeeks.org/readwrite-class-objects-fromto-file-c/
 */
@@ -9,18 +7,13 @@ using namespace std;
 
 class Account
 {
-private:
-    string Full_Name, username, password, status, email, gender, contact_number; // e.g student, faculty, head, society head, director, visitor
-    bool Modification_rights;                                                    // head, society head, director can apply
-    int Age;
-    float cgpa;
+protected:
+    string Full_Name, username, password, status, email, id; // e.g student, faculty, head, society head, director, visitor
 
 public:
     void setName(string temp) { Full_Name = temp; }
-    void setAge(int temp) { Age = temp; }
     string getUserName() { return username; }
     string getPassword() { return password; }
-    int getAge() { return Age; }
     void Account_register()
     {
         int choice;
@@ -46,32 +39,27 @@ public:
                 cout << "Password not matched." << endl;
             }
         }
+        cout << "Full Name: ";
+        fflush(stdin);
+        getline(cin, Full_Name);
         cout << "E-mail Address: ";
         fflush(stdin);
         getline(cin, email);
-        cout << "Contact Number: ";
-        cin >> contact_number;
-        cout << "Gender: ";
         fflush(stdin);
-        getline(cin, gender);
     };
     void DisplayAccountData()
     {
         cout << "\nObect readed completely\n"
              << "\nUsername: " << username
              << "\nPassword: " << password
-             << "\nE-mail Address: " << email
-             << "\nContact Number: " << contact_number
-             << "\nGender: " << gender;
+             << "\nE-mail Address: " << email;
     };
 };
 
 class Student : public Account
 {
 private:
-    string std_id;
     float cgpa;
-    string department;
 
 public:
     void Account_register()
@@ -79,26 +67,21 @@ public:
         Account::Account_register();
         cout << "Student ID (e.g: 21K-XXXX): ";
         fflush(stdin);
-        getline(cin, std_id);
+        getline(cin, id);
         cout << "CGPA: ";
         cin >> cgpa;
-        cout << "Department: ";
-        fflush(stdin);
-        getline(cin, department);
     };
     void DisplayAccountData()
     {
         Account::DisplayAccountData();
-        cout << "\nStudent ID: " << std_id
-             << "\nCGPA: " << cgpa
-             << "\nDepartment: " << department;
+        cout << "\nStudent ID: " << id
+             << "\nCGPA: " << cgpa;
     };
 };
 class Faculty : public Account
 {
 private:
-    string faculty_id, designation, department;
-    int Joining_year;
+    string designation;
 
 public:
     void Account_register()
@@ -106,30 +89,22 @@ public:
         Account::Account_register();
         cout << "Faculty ID (e.g: 21K-XXXX): ";
         fflush(stdin);
-        getline(cin, faculty_id);
+        getline(cin, id);
         cout << "Designation: ";
         fflush(stdin);
         getline(cin, designation);
-        cout << "Working since: (year)";
-        cin >> Joining_year;
-        cout << "Department: ";
-        fflush(stdin);
-        getline(cin, department);
     };
     void DisplayAccountData()
     {
         Account::DisplayAccountData();
-        cout << "\nFaculty ID: " << faculty_id
-             << "\nDesignation: " << designation
-             << "\nWorking since: " << Joining_year
-             << "\nDepartment: " << department;
+        cout << "\nFaculty ID: " << id
+             << "\nDesignation: " << designation;
     };
 };
 class Alumni : public Account
 {
 private:
-    string std_id, alumni_graduation, alumni_academic, job;
-    float cgpa;
+    string graduating_year;
 
 public:
     void Account_register()
@@ -137,37 +112,19 @@ public:
         Account::Account_register();
         cout << "Student ID (e.g: 21K-XXXX): ";
         fflush(stdin);
-        getline(cin, std_id);
-        cout << "CGPA: ";
-        cin >> cgpa;
-        cout << "Graduation department: ";
-        fflush(stdin);
-        getline(cin, alumni_graduation);
-        cout << "Current Academic program (if enrolled in any): ";
-        fflush(stdin);
-        getline(cin, alumni_academic);
-        cout << "Current job: (if any)";
-        fflush(stdin);
-        getline(cin, job);
+        getline(cin, id);
+        cout << "Graduating Year: ";
+        cin >> graduating_year;
     };
     void DisplayAccountData()
     {
         Account::DisplayAccountData();
-        cout << "\nStudent ID: " << std_id
-             << "\nCGPA: " << cgpa
-             << "\nGraduation department: " << alumni_graduation
-             << "\nCurrent Academic program: " << alumni_academic
-             << "\nCurrent job: " << job;
+        cout << "\nStudent ID: " << id
+             << "\nGraduating Year: " << graduating_year;
     };
 };
 
-class Member : public Account
-{
-private:
-    string Member_Role;
-
-public:
-};
+;
 int login()
 {
     int choice;
@@ -179,6 +136,7 @@ int login()
         cout << "Press\n"
              << "   1. Register\n"
              << "   2. Login\n"
+             << "   3. Continue as Guest\n"
              << "   0. Exit\n"
              << "Your Input: ";
         cin >> choice;

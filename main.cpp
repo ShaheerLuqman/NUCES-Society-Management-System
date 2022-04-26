@@ -88,7 +88,6 @@ private:
     string Society_Description;
     int Number_Of_Events;
     Events *events;
-    Member *members;
 
 public:
 };
