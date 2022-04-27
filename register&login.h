@@ -3,8 +3,6 @@
     ● https://www.geeksforgeeks.org/readwrite-class-objects-fromto-file-c/
 */
 
-using namespace std;
-
 class Account
 {
 protected:

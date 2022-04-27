@@ -1,5 +1,4 @@
 #include <ctime>
-using namespace std;
 
 class Date
 {

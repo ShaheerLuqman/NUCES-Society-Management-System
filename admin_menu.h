@@ -1,5 +1,4 @@
-
-void visitor_menu()
+void admin_menu()
 {
     int choice;
     system("cls");

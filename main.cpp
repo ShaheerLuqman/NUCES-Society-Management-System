@@ -23,6 +23,7 @@ To be done later:
 #include "visitor_menu.h"
 #include "events.h"
 #include "society.h"
+#include "admin_menu.h"
 
 using namespace std;
 
