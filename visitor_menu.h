@@ -1,4 +1,4 @@
-
+using namespace std;
 void visitor_menu()
 {
     int choice;
@@ -11,15 +11,10 @@ void visitor_menu()
              << "   2. View Events\n"
              << "   3. View Notifications\n"
              << "   4. Important Dates\n"
-             << "   9. Back\n"
-             << "   0. Exit\n"
+             << "   0. Back\n"
              << "Your Input: ";
         cin >> choice;
         if (choice == 0)
-        {
-            exit(EXIT_SUCCESS);
-        }
-        else if (choice == 9)
         {
             return;
         }

@@ -1,3 +1,4 @@
+using namespace std;
 #include <ctime>
 
 class Date

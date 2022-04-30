@@ -42,6 +42,7 @@ int main()
              << "   2. Enter an Event\n"
              << "   3. Current Date And Time\n"
              << "   4. Continue as Guest\n"
+             << "   5. Test\n"
              << "   0. Exit\n"
              << "Your Input: ";
         cin >> choice;
@@ -56,9 +57,9 @@ int main()
         }
         else if (choice == 2)
         {
-            Events event;
-            event.getEventData();
-            event.DisplayEventData();
+            //     Events event;
+            //     event.getEventData();
+            //     event.DisplayEventData();
         }
         else if (choice == 3)
         {
@@ -68,6 +69,11 @@ int main()
         {
             cout << "Welcome Visitor!";
             visitor_menu();
+        }
+        else if (choice == 5)
+        {
+            Society test;
+            test.NewSociety();
         }
     }
     return 0;
