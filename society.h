@@ -14,22 +14,22 @@ private:
 public:
     void NewSociety()
     {
-        // ofstream fileo;
-        // ifstream filei;
+        ofstream fileo;
+        ifstream filei;
         string fname;
 
-        cout << "\nEnter Society name:";
+        cout << "\nEnter Society name: ";
         fflush(stdin);
         getline(cin, Society_Name);
 
-        cout << "\nEnter Society Description:";
+        cout << "\nEnter Society Description: ";
         fflush(stdin);
         getline(cin, Society_Description);
 
-        cout << "\nEnter Number of Events:";
+        cout << "\nEnter Number of Events: ";
         cin >> Number_Of_Events;
 
-        fname = "society_" + Society_Name + ".txt";
+        fname = "society_" + Society_Name + ".csv";
         for (int i = 0; i < fname.length(); i++)
         {
             if (fname[i] == ' ')
@@ -37,11 +37,12 @@ public:
         }
 
         // fname.replace(fname.begin(), fname.end(), ' ', '_'); // replace all 'x' to 'y'
-        // cout << fname << endl;
+        cout << fname << endl;
 
-        // fileo.open(fname.c_str());
-        // fileo << usn << endl
-        //       << name << endl
-        //       << psd << endl;
+        fileo.open(fname.c_str());
+        fileo << Society_Name << endl
+              << Society_Description << endl
+              << Number_Of_Events << endl;
+        fileo.close();
     };
 };
