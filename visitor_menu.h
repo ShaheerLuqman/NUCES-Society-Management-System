@@ -20,7 +20,6 @@ void visitor_menu()
         }
         else if (choice == 1)
         {
-            system("cls");
         }
         else if (choice == 2)
         {

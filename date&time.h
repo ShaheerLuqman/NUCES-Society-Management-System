@@ -1,7 +1,7 @@
 using namespace std;
 #include <ctime>
 
-class Date
+class date
 {
 private:
     int day;
@@ -9,7 +9,7 @@ private:
     int year;
 
 public:
-    void inputDate()
+    void inputdate()
     {
         int flag = 0;
         while (flag == 0)
@@ -64,7 +64,7 @@ public:
     int getDay() { return day; }
     int getMonth() { return month; }
     int getYear() { return year; }
-    void DisplayDate()
+    void displaydate()
     {
         cout << setfill('0') << setw(2) << day << "/" << setfill('0') << setw(2) << month << "/" << setfill('0') << setw(4) << year;
     }
@@ -92,21 +92,21 @@ public:
 //     void DisplayTime() { cout << setfill('0') << setw(2) << hr << ":" << setfill('0') << setw(2) << min; };
 // };
 
-void CurrentDateTime()
+void CurrentdateTime()
 {
     // Time currentTime;
-    Date currentDate;
+    date currentdate;
     time_t t = time(NULL);
     tm *timePtr = localtime(&t);
     // currentTime.setHour(timePtr->tm_hour);
     // currentTime.setMinutes(timePtr->tm_min);
 
-    currentDate.setDay(timePtr->tm_mday);
-    currentDate.setMonth((timePtr->tm_mon) + 1);
-    currentDate.setYear((timePtr->tm_year) + 1900);
+    currentdate.setDay(timePtr->tm_mday);
+    currentdate.setMonth((timePtr->tm_mon) + 1);
+    currentdate.setYear((timePtr->tm_year) + 1900);
 
     cout << "Date     ";
-    currentDate.DisplayDate();
+    currentdate.displaydate();
     cout << endl;
     // cout << "Time     ";
     // currentTime.DisplayTime();

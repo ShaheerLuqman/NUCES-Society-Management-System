@@ -4,9 +4,9 @@ class Events
 private:
      string Event_name;
      string Event_Description;
-     Date Start_date;
+     date Start_date;
      // Time Start_time;
-     Date End_date;
+     date End_date;
      // Time End_time;
      string Event_Status; // past, Ongoing or Future. It will be determined not taken as input
 
@@ -17,26 +17,28 @@ public:
                << "Enter Event Details\n"
                << string(50, '~') << endl;
           cout << "Enter Event Name : ";
-          cin >> Event_name;
+          fflush(stdin);
+          getline(cin, Event_name);
           cout << "Enter Event Description : ";
-          cin >> Event_Description;
-          printLine();
+          fflush(stdin);
+          getline(cin, Event_Description);
+          cout << string(50, '~') << endl;
           cout << "Enter Event Starting Date\n";
-          printLine();
-          Start_date.inputDate();
-          printLine();
+          cout << string(50, '~') << endl;
+          Start_date.inputdate();
+          cout << string(50, '~') << endl;
           // cout << "Enter Event Starting Time\n";
-          // printLine();
+          // cout << string(50, '~') << endl;
           // Start_time.inputTime();
-          // printLine();
-          cout << "Enter Event Ending Date\n";
-          printLine();
-          End_date.inputDate();
-          printLine();
+          // cout << string(50, '~') << endl;
+          // cout << "Enter Event Ending Date\n";
+          // cout << string(50, '~') << endl;
+          // End_date.inputdate();
+          // cout << string(50, '~') << endl;
           // cout << "Enter Event Ending Time\n";
-          // printLine();
+          // cout << string(50, '~') << endl;
           // End_time.inputTime();
-          // printLine();
+          // cout << string(50, '~') << endl;
      }
 
      void DisplayEventData()
@@ -44,11 +46,11 @@ public:
           cout << "Event Name : " << Event_name << endl
                << "Event Description :" << Event_Description << endl;
           cout << "Event Start Date :";
-          Start_date.DisplayDate();
-          cout << endl
-               << "Event End Date : ";
-          End_date.DisplayDate();
+          Start_date.displaydate();
           cout << endl;
+          //      << "Event End Date : ";
+          // End_date.displaydate();
+          // cout << endl;
           //      << "Event Start Time : ";
           // Start_time.DisplayTime();
           // cout << endl

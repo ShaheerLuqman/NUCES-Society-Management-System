@@ -32,9 +32,9 @@ void printLine() { cout << string(50, '~') << endl; }
 int main()
 {
     int choice;
-    system("cls");
     while (1)
     {
+        system("cls");
         printLine();
         cout << "Welcome to Nuces Society Management System";
         cout << "\nPress\n"
@@ -57,13 +57,13 @@ int main()
         }
         else if (choice == 2)
         {
-            //     Events event;
-            //     event.getEventData();
-            //     event.DisplayEventData();
+            Events event;
+            event.getEventData();
+            event.DisplayEventData();
         }
         else if (choice == 3)
         {
-            CurrentDateTime();
+            CurrentdateTime();
         }
         else if (choice == 4)
         {
