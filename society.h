@@ -26,7 +26,8 @@ public:
         fflush(stdin);
         getline(cin, society_description);
 
-        fname = "society_" + society_name + ".csv";
+        file_name = "society_" + society_name + ".csv";
+        fname = file_name;
         for (int i = 0; i < fname.length(); i++)
         {
             if (fname[i] == ' ')
@@ -36,9 +37,34 @@ public:
         cout << fname << endl;
 
         fileo.open(fname.c_str());
-        fileo << society_name << ", "
+        fileo << society_name << endl
               << society_description << endl
               << number_of_events << endl;
         fileo.close();
+    };
+
+    void read_society()
+    {
+        ifstream filei;
+        string num_of_events, name;
+        cout << "Enter society name:";
+        cin >> name;
+        string fname = file_name;
+
+        filei.open(fname.c_str());
+        if (!filei.is_open() && filei.fail())
+        {
+            cout << "\nYou are not registered, please register before logging in.\n";
+            filei.close();
+        }
+        getline(filei, society_name);
+        getline(filei, society_description);
+        getline(filei, num_of_events);
+        number_of_events = stoi(num_of_events);
+        cout << endl;
+    };
+
+    void display_society(){
+
     };
 };

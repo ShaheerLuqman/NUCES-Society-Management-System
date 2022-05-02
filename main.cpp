@@ -3,6 +3,7 @@ OBJECTIVES:
 Partially Done:
     ● Account registry
     ● Information Regarding Events (Past, Ongoing and Future)
+    ● Duration of Events
 
 To be done later:
     ● Allocation of accessibility to different accounts (example, Personal accounts can be updated
