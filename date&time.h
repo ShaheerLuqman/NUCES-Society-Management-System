@@ -70,36 +70,36 @@ public:
     }
 };
 
-class Time
-{
-private:
-    int hr;
-    int min;
+// class Time
+// {
+// private:
+//     int hr;
+//     int min;
 
-public:
-    void inputTime()
-    {
-        cout << "Enter Time in 24 hour format\n"
-             << "Enter hours: ";
-        cin >> hr;
-        cout << "Enter minutes: ";
-        cin >> min;
-    }
-    void setHour(int temp) { hr = temp; }
-    void setMinutes(int temp) { min = temp; }
-    int getHour() { return hr; }
-    int getMinutes() { return min; }
-    void DisplayTime() { cout << setfill('0') << setw(2) << hr << ":" << setfill('0') << setw(2) << min; };
-};
+// public:
+//     void inputTime()
+//     {
+//         cout << "Enter Time in 24 hour format\n"
+//              << "Enter hours: ";
+//         cin >> hr;
+//         cout << "Enter minutes: ";
+//         cin >> min;
+//     }
+//     void setHour(int temp) { hr = temp; }
+//     void setMinutes(int temp) { min = temp; }
+//     int getHour() { return hr; }
+//     int getMinutes() { return min; }
+//     void DisplayTime() { cout << setfill('0') << setw(2) << hr << ":" << setfill('0') << setw(2) << min; };
+// };
 
 void CurrentDateTime()
 {
-    Time currentTime;
+    // Time currentTime;
     Date currentDate;
     time_t t = time(NULL);
     tm *timePtr = localtime(&t);
-    currentTime.setHour(timePtr->tm_hour);
-    currentTime.setMinutes(timePtr->tm_min);
+    // currentTime.setHour(timePtr->tm_hour);
+    // currentTime.setMinutes(timePtr->tm_min);
 
     currentDate.setDay(timePtr->tm_mday);
     currentDate.setMonth((timePtr->tm_mon) + 1);
@@ -108,7 +108,7 @@ void CurrentDateTime()
     cout << "Date     ";
     currentDate.DisplayDate();
     cout << endl;
-    cout << "Time     ";
-    currentTime.DisplayTime();
-    cout << endl;
+    // cout << "Time     ";
+    // currentTime.DisplayTime();
+    // cout << endl;
 }

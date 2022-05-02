@@ -2,14 +2,14 @@
 #include <cstring>
 
 using namespace std;
-class Society
+class society
 {
 private:
-    string Society_Name;
-    string Society_Description;
-    int Number_Of_Events;
+    string society_name, file_name;
+    string society_description;
+    int number_of_events = 0, number_of_members = 0;
     Events *events;
-    string Members[25][5]; // array of member details   Name    ID      email
+    string members[25][5]; // array of member details   Name    ID      email
 
 public:
     void NewSociety()
@@ -20,29 +20,25 @@ public:
 
         cout << "\nEnter Society name: ";
         fflush(stdin);
-        getline(cin, Society_Name);
+        getline(cin, society_name);
 
         cout << "\nEnter Society Description: ";
         fflush(stdin);
-        getline(cin, Society_Description);
+        getline(cin, society_description);
 
-        cout << "\nEnter Number of Events: ";
-        cin >> Number_Of_Events;
-
-        fname = "society_" + Society_Name + ".csv";
+        fname = "society_" + society_name + ".csv";
         for (int i = 0; i < fname.length(); i++)
         {
             if (fname[i] == ' ')
                 fname[i] = '_';
         }
 
-        // fname.replace(fname.begin(), fname.end(), ' ', '_'); // replace all 'x' to 'y'
         cout << fname << endl;
 
         fileo.open(fname.c_str());
-        fileo << Society_Name << endl
-              << Society_Description << endl
-              << Number_Of_Events << endl;
+        fileo << society_name << ", "
+              << society_description << endl
+              << number_of_events << endl;
         fileo.close();
     };
 };

@@ -72,7 +72,7 @@ int main()
         }
         else if (choice == 5)
         {
-            Society test;
+            society test;
             test.NewSociety();
         }
     }
