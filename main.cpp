@@ -19,6 +19,8 @@ To be done later:
 #include <string>
 #include <iomanip>
 #include <fstream>
+#include <Windows.h>
+#include <cstdlib>
 #include "register&login.h"
 #include "date&time.h"
 #include "visitor_menu.h"
@@ -75,6 +77,13 @@ int main()
         {
             society test;
             test.NewSociety();
+        }
+        else if (choice == 6)
+        {
+            society test;
+            test = read_society();
+            test.display_society();
+            Sleep(5000);
         }
     }
     return 0;
