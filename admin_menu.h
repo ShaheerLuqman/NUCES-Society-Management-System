@@ -39,7 +39,6 @@ void admin_menu()
             {
                 test.add_new_event();
                 test.display_event_names();
-                Sleep(5000);
             }
         }
     }

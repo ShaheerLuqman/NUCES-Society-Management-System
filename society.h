@@ -2,6 +2,8 @@
 #include <cstring>
 #include <string.h>
 #include <bits/stdc++.h>
+#define Max_number_of_members 5
+#define Max_number_of_events 5
 
 using namespace std;
 class society
@@ -10,8 +12,8 @@ protected:
     string society_name, file_name;
     string society_description;
     int number_of_events = 0, number_of_members = 0;
-    string *event_names;
-    string member_names[5];
+    string event_names[Max_number_of_events];
+    string member_names[Max_number_of_members];
 
 public:
     string get_file_name() { return file_name; };
@@ -68,7 +70,6 @@ public:
     void add_new_event()
     {
         number_of_events++;
-        event_names = new string[number_of_events];
         string name;
         cout << "Enter Event Name: ";
         cin >> name;
@@ -77,9 +78,7 @@ public:
     void display_event_names()
     {
         for (int i = 0; i < number_of_events; i++)
-        {
             cout << event_names[i] << endl;
-        };
     }
     void add_new_member() {}
 };
