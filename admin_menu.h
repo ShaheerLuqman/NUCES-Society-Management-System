@@ -8,10 +8,10 @@ void admin_menu()
     {
         cout << "Welcome to Nuces Society Management System";
         cout << "\nPress\n"
-             << "   1. View Society Details\n"
-             << "   2. View Events\n"
-             << "   3. View Notifications\n"
-             << "   4. Important Dates\n"
+             << "   1. \n"
+             << "   2. Enter an Event\n"
+             << "   3. Current Date And Time\n"
+             << "   4. Test\n"
              << "   0. Back\n"
              << "Your Input: ";
         cin >> choice;
@@ -21,16 +21,26 @@ void admin_menu()
         }
         else if (choice == 1)
         {
-            system("cls");
         }
         else if (choice == 2)
         {
+            Events event;
+            event.getEventData();
+            event.DisplayEventData();
         }
         else if (choice == 3)
         {
+            CurrentdateTime();
         }
         else if (choice == 4)
         {
+            society test;
+            while (1)
+            {
+                test.add_new_event();
+                test.display_event_names();
+                Sleep(5000);
+            }
         }
     }
 };

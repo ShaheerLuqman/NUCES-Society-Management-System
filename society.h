@@ -10,8 +10,8 @@ protected:
     string society_name, file_name;
     string society_description;
     int number_of_events = 0, number_of_members = 0;
-    Events *events;
-    string members[25][5]; // array of member details   Name    ID      email
+    string *event_names;
+    string member_names[5];
 
 public:
     string get_file_name() { return file_name; };
@@ -52,7 +52,7 @@ public:
               << society_description << endl
               << number_of_events << endl;
         fileo.close();
-    };
+    }
 
     void display_society()
     {
@@ -63,7 +63,25 @@ public:
         // {
         //     events[i].DisplayEventData();
         // }
-    };
+    }
+
+    void add_new_event()
+    {
+        number_of_events++;
+        event_names = new string[number_of_events];
+        string name;
+        cout << "Enter Event Name: ";
+        cin >> name;
+        event_names[number_of_events - 1] = name;
+    }
+    void display_event_names()
+    {
+        for (int i = 0; i < number_of_events; i++)
+        {
+            cout << event_names[i] << endl;
+        };
+    }
+    void add_new_member() {}
 };
 
 society read_society()

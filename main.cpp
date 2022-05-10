@@ -42,10 +42,10 @@ int main()
         cout << "Welcome to Nuces Society Management System";
         cout << "\nPress\n"
              << "   1. Log In or Register\n"
-             << "   2. Enter an Event\n"
-             << "   3. Current Date And Time\n"
-             << "   4. Continue as Guest\n"
-             << "   5. Test\n"
+             << "   2. Continue as Guest\n"
+             << "   3. \n"
+             << "   4. \n"
+             << "   5. \n"
              << "   0. Exit\n"
              << "Your Input: ";
         cin >> choice;
@@ -60,30 +60,22 @@ int main()
         }
         else if (choice == 2)
         {
-            Events event;
-            event.getEventData();
-            event.DisplayEventData();
-        }
-        else if (choice == 3)
-        {
-            CurrentdateTime();
-        }
-        else if (choice == 4)
-        {
             cout << "Welcome Visitor!";
             visitor_menu();
         }
+        else if (choice == 3)
+        {
+            cout << "Welcome admn!";
+            admin_menu();
+        }
+        else if (choice == 4)
+        {
+        }
         else if (choice == 5)
         {
-            society test;
-            test.NewSociety();
         }
         else if (choice == 6)
         {
-            society test;
-            test = read_society();
-            test.display_society();
-            Sleep(5000);
         }
     }
     return 0;
