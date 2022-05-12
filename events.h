@@ -2,60 +2,40 @@ using namespace std;
 class Events
 {
 private:
-     string Event_name;
-     string Event_Description;
-     date Start_date;
-     // Time Start_time;
-     date End_date;
-     // Time End_time;
-     string Event_Status; // past, Ongoing or Future. It will be determined not taken as input
+     string event_name;
+     string event_description;
+     date event_date;
+     string event_status; // past, Ongoing or Future. It will be determined not taken as input
 
 public:
      void getEventData()
      {
-          cout << string(50, '~') << endl
-               << "Enter Event Details\n"
-               << string(50, '~') << endl;
+          cout << string(50, '~') << endl;
+          cout << "Enter Event Details\n";
+
           cout << "Enter Event Name : ";
           fflush(stdin);
-          getline(cin, Event_name);
+          getline(cin, event_name);
           cout << "Enter Event Description : ";
           fflush(stdin);
-          getline(cin, Event_Description);
+          getline(cin, event_description);
+          cout << "Enter Event Date\n";
+          event_date.inputdate();
           cout << string(50, '~') << endl;
-          cout << "Enter Event Starting Date\n";
-          cout << string(50, '~') << endl;
-          Start_date.inputdate();
-          cout << string(50, '~') << endl;
-          // cout << "Enter Event Starting Time\n";
-          // cout << string(50, '~') << endl;
-          // Start_time.inputTime();
-          // cout << string(50, '~') << endl;
-          // cout << "Enter Event Ending Date\n";
-          // cout << string(50, '~') << endl;
-          // End_date.inputdate();
-          // cout << string(50, '~') << endl;
-          // cout << "Enter Event Ending Time\n";
-          // cout << string(50, '~') << endl;
-          // End_time.inputTime();
-          // cout << string(50, '~') << endl;
      }
 
      void DisplayEventData()
      {
-          cout << "Event Name : " << Event_name << endl
-               << "Event Description :" << Event_Description << endl;
-          cout << "Event Start Date :";
-          Start_date.displaydate();
-          cout << endl;
-          //      << "Event End Date : ";
-          // End_date.displaydate();
-          // cout << endl;
-          //      << "Event Start Time : ";
-          // Start_time.DisplayTime();
-          // cout << endl
-          //      << "Event End Time : ";
-          // End_time.DisplayTime();
-          // cout << endl;
+          cout << string(50, '~') << endl;
+          cout << "Event Name : " << event_name
+               << "\nEvent Description :" << event_description
+               << "\nEvent Date :";
+          event_date.displaydate();
+     }
+
+     void determine_event_status()
+     {
+          // if current
+          //      time >
      }
 };

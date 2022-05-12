@@ -30,7 +30,9 @@ void admin_menu()
         }
         else if (choice == 3)
         {
-            CurrentdateTime();
+            date current;
+            current = Currentdate();
+            current.displaydate();
         }
         else if (choice == 4)
         {

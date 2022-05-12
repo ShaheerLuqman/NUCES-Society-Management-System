@@ -21,8 +21,9 @@ To be done later:
 #include <fstream>
 #include <Windows.h>
 #include <cstdlib>
+
 #include "register&login.h"
-#include "date&time.h"
+#include "date.h"
 #include "visitor_menu.h"
 #include "events.h"
 #include "society.h"
@@ -43,7 +44,7 @@ int main()
         cout << "\nPress\n"
              << "   1. Log In or Register\n"
              << "   2. Continue as Guest\n"
-             << "   3. \n"
+             << "   3. Continue as Admin\n"
              << "   4. \n"
              << "   5. \n"
              << "   0. Exit\n"
@@ -69,12 +70,6 @@ int main()
             admin_menu();
         }
         else if (choice == 4)
-        {
-        }
-        else if (choice == 5)
-        {
-        }
-        else if (choice == 6)
         {
         }
     }
