@@ -1,4 +1,9 @@
-using namespace std;
+/*
+New society
+add event to society
+add member to society
+create new event
+*/
 
 void admin_menu()
 {
@@ -11,7 +16,7 @@ void admin_menu()
              << "   1. \n"
              << "   2. Enter an Event\n"
              << "   3. Current Date And Time\n"
-             << "   4. Test\n"
+             << "   4. Test\n" // new society,
              << "   0. Back\n"
              << "Your Input: ";
         cin >> choice;
