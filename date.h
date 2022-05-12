@@ -31,7 +31,7 @@ public:
                     flag = 1;
                 else if (m == 2)
                 {
-                    if ((y % 400 == 0 || (y % 100 != 0 && y % 4 == 0)) && d > 0 && d <= 29)
+                    if ((y % 4 == 0) && d > 0 && d <= 29)
                         flag = 1;
                     else if (d > 0 && d <= 28)
                         flag = 1;
