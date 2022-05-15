@@ -62,6 +62,76 @@ public:
     int getMonth() { return month; }
     int getYear() { return year; }
     void displaydate() { cout << setfill('0') << setw(2) << day << "/" << setfill('0') << setw(2) << month << "/" << setfill('0') << setw(4) << year << endl; }
+	int CompareDate(date d1, date d2){
+        if(d1.day == d2.day && d1.month == d2.month && d1.year == d2.year){
+            return 1;
+        }
+        else if(d1.day > d2.day)
+        {
+            if(d1.month > d2.month){
+                if(d1.year > d2.year){
+                    return 2;
+                }
+                else if(d1.year < d2.year){
+                    return 3;
+                }
+                else{
+                	return 2;
+				}
+            }
+            else if(d1.month < d2.month){
+                if(d1.year > d2.year){
+                    return 2;
+                }
+                else if(d1.year < d2.year){
+                    return 3;
+                }
+                else{
+                	return 3;
+				}
+            }
+            else{
+                if(d1.year > d2.year){
+                    return 2;
+                }
+                else if(d1.year < d2.year){
+                    return 3;
+                }
+                else{
+                	return 2;
+				}
+            }
+        }
+        else if(d1.day < d2.day){
+            if(d1.month > d2.month){
+                if(d1.year > d2.year){
+                    return 2;
+                }
+                else if(d1.year < d2.year){
+                    return 3;
+                }
+            }
+            else if(d1.month < d2.month){
+                if(d1.year > d2.year){
+                    return 2;
+                }
+                else if(d1.year < d2.year){
+                    return 3;
+                }
+            }
+            else{
+                if(d1.year > d1.year){
+                    return 2;
+                }
+                else if(d1.year < d2.year){
+                    return 3;
+                }
+                else{
+                	return 2;
+				}
+            }
+        }
+    }
 };
 
 date Currentdate()
