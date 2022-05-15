@@ -14,7 +14,7 @@ To be done later:
     ● Evaluation of the applicants on the basis of information provided by applicants (It will help
         faculty/Society managers in considering who should be the best candidate)
 */
-
+// test
 #include <iostream>
 #include <string>
 #include <iomanip>
