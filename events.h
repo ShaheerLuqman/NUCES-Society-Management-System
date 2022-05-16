@@ -35,7 +35,13 @@ public:
 
      void determine_event_status()
      {
-          // if current
-          //      time >
+          date curr_date = Currentdate();
+          int temp = CompareDate(curr_date, event_date);
+          if (temp == 1)
+               event_status = "ongoing";
+          else if (temp == 2)
+               event_status = "past";
+          else if (temp == 3)
+               event_status = "future";
      }
 };
