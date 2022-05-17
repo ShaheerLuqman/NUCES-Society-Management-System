@@ -30,13 +30,13 @@ void admin_menu()
         else if (choice == 2)
         {
             Events event;
-            event.getEventData();
-            event.DisplayEventData();
+            event.get_event_data();
+            event.display_event_data();
         }
         else if (choice == 3)
         {
             date current;
-            current = Currentdate();
+            current = current_date();
             current.displaydate();
         }
         else if (choice == 4)

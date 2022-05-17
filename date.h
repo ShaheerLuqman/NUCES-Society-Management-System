@@ -64,7 +64,7 @@ public:
     void displaydate() { cout << setfill('0') << setw(2) << day << "/" << setfill('0') << setw(2) << month << "/" << setfill('0') << setw(4) << year << endl; }
 };
 
-int CompareDate(date &d1, date &d2)
+int compare_date(date &d1, date &d2)
 {
     if (d1.getDay() == d2.getDay() && d1.getMonth() == d2.getMonth() && d1.getYear() == d2.getYear())
         return 1;
@@ -88,7 +88,7 @@ int CompareDate(date &d1, date &d2)
     }
 }
 
-date Currentdate()
+date current_date()
 {
     date currentdate;
     time_t t = time(NULL);

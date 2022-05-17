@@ -8,7 +8,7 @@ private:
      string event_status;
 
 public:
-     void getEventData()
+     void get_event_data()
      {
           cout << string(50, '~') << endl;
           cout << "Enter Event Details\n";
@@ -24,7 +24,7 @@ public:
           cout << string(50, '~') << endl;
      }
 
-     void DisplayEventData()
+     void display_event_data()
      {
           cout << string(50, '~') << endl;
           cout << "Event Name : " << event_name
@@ -35,8 +35,8 @@ public:
 
      void determine_event_status()
      {
-          date curr_date = Currentdate();
-          int temp = CompareDate(curr_date, event_date);
+          date curr_date = current_date();
+          int temp = compare_date(curr_date, event_date);
           if (temp == 1)
                event_status = "ongoing";
           else if (temp == 2)
