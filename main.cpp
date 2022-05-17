@@ -4,6 +4,7 @@ Partially Done:
     ● Account registry
     ● Information Regarding Events (Past, Ongoing and Future)
     ● Duration of Events
+    ● change all string functions with cin to getline
 
 To be done later:
     ● Allocation of accessibility to different accounts (example, Personal accounts can be updated
@@ -14,7 +15,7 @@ To be done later:
     ● Evaluation of the applicants on the basis of information provided by applicants (It will help
         faculty/Society managers in considering who should be the best candidate)
 */
-// test
+
 #include <iostream>
 #include <string>
 #include <iomanip>
@@ -31,16 +32,14 @@ To be done later:
 
 using namespace std;
 
-void printLine() { cout << string(50, '~') << endl; }
-
 int main()
 {
     int choice;
     while (1)
     {
         system("cls");
-        printLine();
-        cout << "Welcome to Nuces Society Management System";
+        cout << string(50, '~') << endl;
+        cout << "\nWelcome to Nuces Society Management System";
         cout << "\nPress\n"
              << "   1. Log In or Register\n"
              << "   2. Continue as Guest\n"

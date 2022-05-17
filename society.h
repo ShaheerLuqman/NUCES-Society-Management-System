@@ -13,7 +13,7 @@ protected:
     string society_description;
     int number_of_events = 0, number_of_members = 0;
     string event_names[Max_number_of_events];
-    string member_names[Max_number_of_members];
+    string member_names[Max_number_of_members][3];
 
 public:
     string get_file_name() { return file_name; };
@@ -80,7 +80,26 @@ public:
         for (int i = 0; i < number_of_events; i++)
             cout << event_names[i] << endl;
     }
-    void add_new_member() {}
+
+    void add_new_member()
+    {
+        number_of_members++;
+        string temp;
+        cout << "Enter Member Name: ";
+        fflush(stdin);
+        getline(cin, temp);
+        member_names[number_of_members - 1][0] = temp;
+
+        cout << "Enter Member Role: ";
+        fflush(stdin);
+        getline(cin, temp);
+        member_names[number_of_members - 1][1] = temp;
+
+        cout << "Enter Member ID: ";
+        fflush(stdin);
+        getline(cin, temp);
+        member_names[number_of_members - 1][2] = temp;
+    }
 };
 
 society read_society()

@@ -5,7 +5,7 @@ private:
      string event_name;
      string event_description;
      date event_date;
-     string event_status; // past, Ongoing or Future. It will be determined not taken as input
+     string event_status;
 
 public:
      void getEventData()
