@@ -23,6 +23,7 @@ To be done later:
 #include <Windows.h>
 #include <cstdlib>
 
+#include "accounts.h"
 #include "register&login.h"
 #include "date.h"
 #include "visitor_menu.h"
