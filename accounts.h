@@ -7,6 +7,7 @@ protected:
 
 public:
     void setName(string temp) { Full_Name = temp; }
+    string getName() { return Full_Name; }
     string getUserName() { return username; }
     string getPassword() { return password; }
     // void virtual abstract_class() = 0;

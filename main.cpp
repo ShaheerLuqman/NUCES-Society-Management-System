@@ -57,7 +57,7 @@ int main()
         else if (choice == 1)
         {
             system("cls");
-            login();
+            login_menu();
         }
         else if (choice == 2)
         {

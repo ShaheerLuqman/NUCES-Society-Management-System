@@ -3,10 +3,83 @@
     ● https://www.geeksforgeeks.org/readwrite-class-objects-fromto-file-c/
 */
 
-void add_account_file(){};
-void retrieve_account_file(){};
+void add_student_account_file(Student &a)
+{
+    ofstream g("student_accounts.txt", std::ios_base::app);
+    if (!g.is_open())
+    {
+        cout << "could not open file\n";
+        exit(EXIT_FAILURE);
+    }
+    else
+    {
+        g.write((char *)&a, sizeof(Student));
+        g.close();
+    }
+};
+Student retrieve_student_account_file(string user, string pass)
+{
+    ifstream f("student_accounts.txt", ios::in);
+    Student b;
+    if (!f.is_open())
+    {
+        cout << "could not open file\n";
+        exit(EXIT_FAILURE);
+    }
+    while (!f.eof())
+    {
+        f.read((char *)&b, sizeof(b));
+        if ((b.getUserName() == user) && (b.getPassword() == pass))
+        {
+        }
+        else
+        {
+            b.setName("not_found");
+        }
+    }
+    f.close();
+    return b;
+};
 
-int login()
+void add_faculty_account_file(Faculty &a)
+{
+    ofstream g("Faculty_accounts.txt", std::ios_base::app);
+    if (!g.is_open())
+    {
+        cout << "could not open file\n";
+        exit(EXIT_FAILURE);
+    }
+    else
+    {
+        g.write((char *)&a, sizeof(Faculty));
+        g.close();
+    }
+};
+Faculty retrieve_faculty_account_file(string user, string pass)
+{
+    ifstream f("Faculty_accounts.txt", ios::in);
+    Faculty b;
+    if (!f.is_open())
+    {
+        cout << "could not open file\n";
+        exit(EXIT_FAILURE);
+    }
+    while (!f.eof())
+    {
+        f.read((char *)&b, sizeof(b));
+        if ((b.getUserName() == user) && (b.getPassword() == pass))
+        {
+        }
+        else
+        {
+            b.setName("not_found");
+        }
+    }
+    f.close();
+    return b;
+};
+
+int login_menu()
 {
     int choice;
 
@@ -27,76 +100,54 @@ int login()
         }
         else if (choice == 1) // Register
         {
-            ofstream g("registration.txt", std::ios_base::app);
-            if (!g.is_open()) // if it's not open, then there is no such file with the given name inside
-            {
-                cout << "could not open file\n";
-                exit(EXIT_FAILURE);
-            }
-
             cout << "Enter number which describes you! " << endl
                  << "1. Student\n"
                  << "2. Faculty\n"
-                 << "3. Alumni\n";
+                 << "Your choice: ";
             cin >> choice;
             if (choice == 1)
             {
-                ofstream g("registration.txt", std::ios_base::app);
                 Student std;
                 std.Account_register();
-                g.write((char *)&std, sizeof(std));
-                g.close();
+                add_student_account_file(std);
             }
             else if (choice == 2)
             {
-                // for Faculty
-            }
-            else if (choice == 3)
-            {
-                // for Alumni
+                Faculty fac;
+                fac.Account_register();
+                add_faculty_account_file(fac);
             }
         }
         else if (choice == 2) // Login
         {
-            ifstream f("registration.txt", ios::in);
-            if (!f.is_open())
+
+            cout << "\n*********** Account Login ***********\n"
+                 << "Enter Username: ";
+            fflush(stdin);
+            getline(cin, inName);
+            cout << "Enter Password: ";
+            fflush(stdin);
+            getline(cin, inName);
+
+            Student std;
+            std = retrieve_student_account_file(inName, inName);
+
+            Faculty fac;
+            fac = retrieve_faculty_account_file(inName, inName);
+
+            if (!(std.getName() == "not_found" || fac.getName() == "not_found"))
+                cout
+                    << "incorrect name or password\n";
+            else
             {
-                cout << "could not open file\n";
-                exit(EXIT_FAILURE);
-            }
-
-            Student std1;
-            f.read((char *)&std1, sizeof(std1));
-            std1.DisplayAccountData();
-
-            // getline(f, name, '\n');     // reads the user name from file f (which is using "registration.txt")
-            // getline(f, password, '\n'); // reads the password from file f (which is using "registration.txt")
-            // // also, if you tell the file to get you that text up until '\n', that's when you know it reads
-            // // the whole line at most, and won't go any further
-            // // and that is done by the 3rd parameter
-            f.close();
-
-            while (1)
-            {
-                cout << "\n*********** Account Login ***********\n"
-                     << "Enter Username: ";
-                fflush(stdin);
-                getline(cin, inName);
-                cout << "Enter Password: ";
-                fflush(stdin);
-                getline(cin, inPassword);
-                if (inName == std1.getUserName() && inPassword == std1.getPassword())
-                {
-                    cout << "Login Successful\n"
-                         << "Welcome, "
-                         << inName;
-                    std1.DisplayAccountData();
-                    return 1;
-                    break;
-                }
-                cout << "incorrect name or password\n";
+                cout << "Login Successful\n"
+                     << "Welcome, "
+                     << inName;
+                std.DisplayAccountData();
+                return 1;
             }
         }
         cout << "\n######################################\n\n";
+        system("pause");
     }
 }
