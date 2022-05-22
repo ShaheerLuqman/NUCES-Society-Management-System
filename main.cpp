@@ -43,8 +43,6 @@ int main()
         cout << "\nPress\n"
              << "   1. Log In or Register\n"
              << "   2. Continue as Guest\n"
-             << "   3. Continue as Admin\n"
-             << "   4. \n"
              << "   0. Exit\n"
              << "Your Input: ";
         cin >> choice;
@@ -73,17 +71,3 @@ int main()
     }
     return 0;
 }
-
-/*
-- Following OOP concepts are expected to be part of the project:
-    - Abstraction
-    - Classes and Objects
-    - Encapsulations
-    - Inheritances
-    - Polymorphism (Both overloading and overriding)
-    - Conditional and looping structures
-    - Data structure such as arrays, array of objects, arraylists, etc.
-    - Constructors and destructors
-    - Filing and data storage systems
-    - Exception handling
-*/

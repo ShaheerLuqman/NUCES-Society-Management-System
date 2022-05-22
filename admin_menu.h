@@ -1,10 +1,3 @@
-/*
-New society
-add event to society
-add member to society
-create new event
-*/
-
 void admin_menu()
 {
     int choice;
@@ -13,7 +6,7 @@ void admin_menu()
     {
         cout << "Welcome Admin";
         cout << "\nPress\n"
-             << "   1. \n"
+             << "   1. Create New Society\n"
              << "   2. Enter an Event\n"
              << "   3. Current Date And Time\n"
              << "   4. Test\n" // new society,
