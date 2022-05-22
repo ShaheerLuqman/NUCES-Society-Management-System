@@ -57,11 +57,11 @@ public:
 class Student : public Account
 {
 private:
-    float cgpa;
+    string cgpa;
 
 public:
-    float getCGPA() { return cgpa; }
-    void setCGPA(float temp) { cgpa = temp; }
+    string getCGPA() { return cgpa; }
+    void setCGPA(string temp) { cgpa = temp; }
     void virtual abstract_class(){};
     void Account_register()
     {
@@ -70,7 +70,8 @@ public:
         fflush(stdin);
         getline(cin, id);
         cout << "CGPA: ";
-        cin >> cgpa;
+        fflush(stdin);
+        getline(cin, cgpa);
     };
     void DisplayAccountData()
     {
@@ -102,6 +103,6 @@ public:
     {
         Account::DisplayAccountData();
         cout << "\nFaculty ID: " << id
-             << "\nDesignation: " << designation;
+             << "\nDesignation: " << designation << endl;
     };
 };

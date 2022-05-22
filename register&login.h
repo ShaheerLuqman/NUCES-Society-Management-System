@@ -43,13 +43,12 @@ Student retrieve_student_account_file(string user, string pass)
         b.setEmail(line);
         getline(f, line, ','); // id
         b.setID(line);
-        getline(f, line, ','); // cgpa
-        b.setCGPA(stof(line));
+        getline(f, line); // cgpa
+        b.setCGPA(line);
 
         if ((b.getUserName() == user) && (b.getPassword() == pass))
-        {
             break;
-        }
+
         else
         {
             string temp = "not_found";
@@ -97,13 +96,12 @@ Faculty retrieve_faculty_account_file(string user, string pass)
         b.setEmail(line);
         getline(f, line, ','); // id
         b.setID(line);
-        getline(f, line, ','); // designation
+        getline(f, line); // designation
         b.setDesignation(line);
 
         if ((b.getUserName() == user) && (b.getPassword() == pass))
-        {
             break;
-        }
+
         else
         {
             string temp = "not_found";
@@ -117,7 +115,6 @@ Faculty retrieve_faculty_account_file(string user, string pass)
 int login_menu()
 {
     int choice;
-
     string name, password, inName, inPassword;
 
     while (1)
@@ -174,21 +171,23 @@ int login_menu()
             {
                 cout << "Login Successful\n"
                      << "Welcome, "
-                     << inName;
+                     << std.getName() << endl;
                 std.DisplayAccountData();
                 system("pause");
                 visitor_menu();
+                return 1;
             }
-            else if (fac.getName() == "not_found")
+            if (fac.getName() != "not_found")
             {
                 cout << "Login Successful\n"
                      << "Welcome, "
-                     << inName;
-                std.DisplayAccountData();
+                     << fac.getName() << endl;
+                fac.DisplayAccountData();
                 system("pause");
                 admin_menu();
+                return 1;
             }
-            else
+            if ((std.getName() == "not_found") && (fac.getName() == "not_found"))
             {
                 cout << "incorrect name or password\n";
                 system("pause");
