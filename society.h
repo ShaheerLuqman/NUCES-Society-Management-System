@@ -2,8 +2,6 @@
 #define Max_number_of_members 5
 #define Max_number_of_events 5
 
-using namespace std;
-
 /*
 New society
 add event to society
@@ -17,17 +15,19 @@ protected:
     string society_name;
     string society_description;
     int number_of_events = 0, number_of_members = 0;
+
+public:
     string event_names[Max_number_of_events];
     string member_names[Max_number_of_members][3];
 
-public:
     string get_society_name() { return society_name; };
     void set_society_name(string n) { society_name = n; };
     string get_society_description() { return society_description; };
     void set_society_description(string n) { society_description = n; };
-
+    void set_number_of_events(int temp) { number_of_events = temp; };
+    void set_number_of_members(int temp) { number_of_members = temp; };
     int get_number_of_events() { return number_of_events; };
-    // void set_number_of_events(int n) { number_of_events = n; };
+    int get_number_of_members() { return number_of_members; };
 
     void NewSociety()
     {
@@ -45,12 +45,12 @@ public:
         cout << "Society Name: " << society_name
              << "\nSociety Description : " << society_description
              << "\nNumber Of Events: " << number_of_events
-             << "\n\nEvents: ";
+             << "\n\nEvents: \n";
         for (int i = 0; i < number_of_events; i++)
             cout << "\t" << event_names[i] << endl;
-        cout << "\n\nMembers: ";
+        cout << "Members:" << endl;
         for (int i = 0; i < number_of_members; i++)
-            cout << "\t" << member_names[i] << endl;
+            cout << member_names[i][0] << "\t" << member_names[i][1] << "\t" << member_names[i][2] << endl;
     }
     void add_new_event()
     {
@@ -86,53 +86,82 @@ public:
     }
 };
 
-// void add_society_account_file(society &soc)
-// {
-//     string file_name = "society_" + soc.get_society_name() + ".csv";
-//     transform(file_name.begin(), file_name.end(), file_name.begin(), ::tolower);
+void add_society_account_file(society &soc)
+{
+    string file_name = "society_" + soc.get_society_name() + ".csv";
+    transform(file_name.begin(), file_name.end(), file_name.begin(), ::tolower);
 
-//     for (int i = 0; i < file_name.length(); i++)
-//     {
-//         if (file_name[i] == ' ')
-//             file_name[i] = '_';
-//     }
-//     fstream f(file_name, ios::out);
-//     if (!f.is_open())
-//     {
-//         cout << "could not open file\n";
-//         exit(EXIT_FAILURE);
-//     }
-//     else
-//     {
-//         // f << std.getUserName() << "," << std.getPassword() << "," << std.getName() << "," << std.getEmail() << "," << std.getID() << "," << std.getCGPA() << endl;
-//         f.close();
-//     }
-// };
+    for (int i = 0; i < file_name.length(); i++)
+    {
+        if (file_name[i] == ' ')
+            file_name[i] = '_';
+    }
+    fstream f(file_name, ios::out);
+    if (!f.is_open())
+    {
+        cout << "could not open file\n";
+        exit(EXIT_FAILURE);
+    }
+    else
+    {
+        f << soc.get_society_name() << endl
+          << soc.get_society_description() << endl
+          << soc.get_number_of_events() << endl
+          << soc.get_number_of_members() << endl;
+        for (int i = 0; i < soc.get_number_of_events(); i++)
+            f << soc.event_names[i] << ',';
+        f << endl;
+        for (int i = 0; i < soc.get_number_of_members(); i++)
+            f << soc.member_names[i][0] << ',' << soc.member_names[i][1] << ',' << soc.member_names[i][2] << endl;
+        f.close();
+    }
+};
 
-// society read_society()
-// {
-//     society temp;
-//     fstream f;
-//     string num_of_events, name, society_name, society_description;
-//     cout << "Enter society name:";
-//     cin >> name;
-//     string fname = "society_" + name + ".csv";
-//     transform(fname.begin(), fname.end(), fname.begin(), ::tolower);
-//     cout << fname << endl;
-//     f.open(fname.c_str());
-//     if (!f.is_open() && f.fail())
-//     {
-//         cout << "\nNo record of society found\n";
-//         f.close();
-//     }
-//     else
-//     {
-//         getline(f, society_name);
-//         temp.set_society_name(society_name);
-//         getline(f, society_description);
-//         temp.set_society_description(society_description);
-//         getline(f, num_of_events);
-//         temp.set_number_of_events(stoi(num_of_events));
-//     }
-//     return temp;
-// };
+society retrieve_society_account_file(string fname)
+{
+    fstream f;
+    society temp;
+    string line;
+    string file_name = "society_" + fname + ".csv";
+    transform(file_name.begin(), file_name.end(), file_name.begin(), ::tolower);
+
+    for (int i = 0; i < file_name.length(); i++)
+    {
+        if (file_name[i] == ' ')
+            file_name[i] = '_';
+    }
+
+    f.open(file_name);
+    if (!f.is_open() && f.fail())
+    {
+        cout << "\nNo record of society found\n";
+        f.close();
+    }
+    else
+    {
+        getline(f, line);
+        temp.set_society_name(line);
+        getline(f, line);
+        temp.set_society_description(line);
+        getline(f, line);
+        temp.set_number_of_events(stoi(line));
+        getline(f, line);
+        temp.set_number_of_members(stoi(line));
+        for (int i = 0; i < temp.get_number_of_events(); i++)
+        {
+            getline(f, line, ',');
+            temp.event_names[i] = line;
+        }
+
+        for (int i = 0; i < temp.get_number_of_members(); i++)
+        {
+            getline(f, line, ',');
+            temp.member_names[i][0] = line;
+            getline(f, line, ',');
+            temp.member_names[i][1] = line;
+            getline(f, line);
+            temp.member_names[i][2] = line;
+        }
+    }
+    return temp;
+};

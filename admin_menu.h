@@ -35,11 +35,21 @@ void admin_menu()
         else if (choice == 4)
         {
             society test;
-            while (1)
-            {
+            test.NewSociety();
+            for (int i = 0; i < 3; i++)
                 test.add_new_event();
-                test.display_event_names();
-            }
+
+            test.display_event_names();
+
+            for (int i = 0; i < 3; i++)
+                test.add_new_member();
+            add_society_account_file(test);
+        }
+        else if (choice == 5)
+        {
+            society t;
+            t = retrieve_society_account_file("acm");
+            t.display_society();
         }
     }
 };
