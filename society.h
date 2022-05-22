@@ -1,6 +1,6 @@
 #include <algorithm>
-#define Max_number_of_members 5
-#define Max_number_of_events 5
+#define Max_number_of_members 20
+#define Max_number_of_events 20
 
 /*
 New society
@@ -110,7 +110,8 @@ void add_society_account_file(society &soc)
           << soc.get_number_of_members() << endl;
         for (int i = 0; i < soc.get_number_of_events(); i++)
             f << soc.event_names[i] << ',';
-        f << endl;
+        if (soc.get_number_of_events() == 1)
+            f << endl;
         for (int i = 0; i < soc.get_number_of_members(); i++)
             f << soc.member_names[i][0] << ',' << soc.member_names[i][1] << ',' << soc.member_names[i][2] << endl;
         f.close();

@@ -36,19 +36,24 @@ void admin_menu()
         {
             society test;
             test.NewSociety();
-            for (int i = 0; i < 3; i++)
-                test.add_new_event();
+            // for (int i = 0; i < 3; i++)
+            add_society_account_file(test);
+            test.add_new_event();
+            add_society_account_file(test);
 
-            test.display_event_names();
-
-            for (int i = 0; i < 3; i++)
-                test.add_new_member();
+            // for (int i = 0; i < 3; i++)
+            test.add_new_member();
             add_society_account_file(test);
         }
         else if (choice == 5)
         {
             society t;
             t = retrieve_society_account_file("acm");
+            t.display_society();
+            t.add_new_event();
+            add_society_account_file(t);
+            t.add_new_member();
+            add_society_account_file(t);
             t.display_society();
         }
     }
