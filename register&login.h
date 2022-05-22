@@ -1,8 +1,3 @@
-/*
-    ● Copy data to local variables when Account logs in
-    ● https://www.geeksforgeeks.org/readwrite-class-objects-fromto-file-c/
-*/
-
 void add_student_account_file(Student &std)
 {
     ofstream f("student_accounts.csv", ios::app);

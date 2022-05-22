@@ -3,9 +3,6 @@
 #define Max_number_of_events 20
 
 /*
-New society
-add event to society
-add member to society
 create new event
 */
 
