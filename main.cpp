@@ -22,6 +22,7 @@ To be done later:
 #include <fstream>
 #include <Windows.h>
 #include <cstdlib>
+using namespace std;
 
 #include "accounts.h"
 #include "date.h"
@@ -30,8 +31,6 @@ To be done later:
 #include "admin_menu.h"
 #include "visitor_menu.h"
 #include "register&login.h"
-
-using namespace std;
 
 int main()
 {

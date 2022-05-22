@@ -11,7 +11,7 @@ void admin_menu()
     system("cls");
     while (1)
     {
-        cout << "Welcome to Nuces Society Management System";
+        cout << "Welcome Admin";
         cout << "\nPress\n"
              << "   1. \n"
              << "   2. Enter an Event\n"

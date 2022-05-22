@@ -61,10 +61,6 @@ public:
         cout << "Society Name: " << society_name << endl;
         cout << "Society Description : " << society_description << endl;
         cout << "Number Of Events: " << number_of_events << endl;
-        // for (int i = 0; i < number_of_events; i++)
-        // {
-        //     events[i].DisplayEventData();
-        // }
     }
 
     void add_new_event()
