@@ -3,14 +3,20 @@ using namespace std;
 class Account
 {
 protected:
-    string Full_Name, username, password, status, email, id; // e.g student, faculty, head, society head, director, visitor
+    string Full_Name, username, password, email, id; // e.g student, faculty, head, society head, director, visitor
 
 public:
     void setName(string temp) { Full_Name = temp; }
     string getName() { return Full_Name; }
+    void setUserName(string temp) { username = temp; }
     string getUserName() { return username; }
+    void setPassword(string temp) { password = temp; }
     string getPassword() { return password; }
-    // void virtual abstract_class() = 0;
+    void setEmail(string temp) { email = temp; }
+    string getEmail() { return email; }
+    void setID(string temp) { id = temp; }
+    string getID() { return id; }
+    void virtual abstract_class() = 0;
 
     void Account_register()
     {
@@ -43,9 +49,7 @@ public:
     };
     void DisplayAccountData()
     {
-        cout << "\nObect readed completely\n"
-             << "\nUsername: " << username
-             << "\nPassword: " << password
+        cout << "\nName: " << Full_Name
              << "\nE-mail Address: " << email;
     };
 };
@@ -56,6 +60,9 @@ private:
     float cgpa;
 
 public:
+    float getCGPA() { return cgpa; }
+    void setCGPA(float temp) { cgpa = temp; }
+    void virtual abstract_class(){};
     void Account_register()
     {
         Account::Account_register();
@@ -69,7 +76,7 @@ public:
     {
         Account::DisplayAccountData();
         cout << "\nStudent ID: " << id
-             << "\nCGPA: " << cgpa;
+             << "\nCGPA: " << cgpa << endl;
     };
 };
 class Faculty : public Account
@@ -78,6 +85,9 @@ private:
     string designation;
 
 public:
+    string getDesignation() { return designation; }
+    void setDesignation(string temp) { designation = temp; }
+    void virtual abstract_class(){};
     void Account_register()
     {
         Account::Account_register();

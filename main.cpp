@@ -24,12 +24,12 @@ To be done later:
 #include <cstdlib>
 
 #include "accounts.h"
-#include "register&login.h"
 #include "date.h"
-#include "visitor_menu.h"
 #include "events.h"
 #include "society.h"
 #include "admin_menu.h"
+#include "visitor_menu.h"
+#include "register&login.h"
 
 using namespace std;
 
@@ -46,7 +46,6 @@ int main()
              << "   2. Continue as Guest\n"
              << "   3. Continue as Admin\n"
              << "   4. \n"
-             << "   5. \n"
              << "   0. Exit\n"
              << "Your Input: ";
         cin >> choice;

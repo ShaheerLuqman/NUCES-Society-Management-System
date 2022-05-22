@@ -2,25 +2,28 @@
     ● Copy data to local variables when Account logs in
     ● https://www.geeksforgeeks.org/readwrite-class-objects-fromto-file-c/
 */
-
-void add_student_account_file(Student &a)
+// #include "visitor_menu.h"
+// #include "admin_menu.h"
+void add_student_account_file(Student &std)
 {
-    ofstream g("student_accounts.txt", std::ios_base::app);
-    if (!g.is_open())
+    ofstream f("student_accounts.csv", ios::app);
+    if (!f.is_open())
     {
         cout << "could not open file\n";
         exit(EXIT_FAILURE);
     }
     else
     {
-        g.write((char *)&a, sizeof(Student));
-        g.close();
+        f << std.getUserName() << "," << std.getPassword() << "," << std.getName() << "," << std.getEmail() << "," << std.getID() << "," << std.getCGPA() << endl;
+        // f.write((char *)&std, sizeof(Student));
+        f.close();
     }
 };
 Student retrieve_student_account_file(string user, string pass)
 {
-    ifstream f("student_accounts.txt", ios::in);
+    ifstream f("student_accounts.csv", ios::in);
     Student b;
+    // cout << "user: " << user << "\npass: " << pass << endl;
     if (!f.is_open())
     {
         cout << "could not open file\n";
@@ -28,36 +31,53 @@ Student retrieve_student_account_file(string user, string pass)
     }
     while (!f.eof())
     {
-        f.read((char *)&b, sizeof(b));
+        // f.read((char *)&b, sizeof(b));
+        string line;
+        getline(f, line, ','); // username
+        b.setUserName(line);
+        getline(f, line, ','); // pass
+        b.setPassword(line);
+        getline(f, line, ','); // name
+        b.setName(line);
+        getline(f, line, ','); // email
+        b.setEmail(line);
+        getline(f, line, ','); // id
+        b.setID(line);
+        getline(f, line, ','); // cgpa
+        b.setCGPA(stof(line));
+
         if ((b.getUserName() == user) && (b.getPassword() == pass))
         {
+            break;
         }
         else
         {
-            b.setName("not_found");
+            string temp = "not_found";
+            b.setName(temp);
         }
     }
     f.close();
     return b;
 };
 
-void add_faculty_account_file(Faculty &a)
+void add_faculty_account_file(Faculty &std)
 {
-    ofstream g("Faculty_accounts.txt", std::ios_base::app);
-    if (!g.is_open())
+    ofstream f("Faculty_accounts.csv", ios::app);
+    if (!f.is_open())
     {
         cout << "could not open file\n";
         exit(EXIT_FAILURE);
     }
     else
     {
-        g.write((char *)&a, sizeof(Faculty));
-        g.close();
+        f << std.getUserName() << "," << std.getPassword() << "," << std.getName() << "," << std.getEmail() << "," << std.getID() << "," << std.getDesignation() << endl;
+        // f.write((char *)&std, sizeof(Faculty));
+        f.close();
     }
 };
 Faculty retrieve_faculty_account_file(string user, string pass)
 {
-    ifstream f("Faculty_accounts.txt", ios::in);
+    ifstream f("Faculty_accounts.csv", ios::in);
     Faculty b;
     if (!f.is_open())
     {
@@ -66,13 +86,28 @@ Faculty retrieve_faculty_account_file(string user, string pass)
     }
     while (!f.eof())
     {
-        f.read((char *)&b, sizeof(b));
+        string line;
+        getline(f, line, ','); // username
+        b.setUserName(line);
+        getline(f, line, ','); // pass
+        b.setPassword(line);
+        getline(f, line, ','); // name
+        b.setName(line);
+        getline(f, line, ','); // email
+        b.setEmail(line);
+        getline(f, line, ','); // id
+        b.setID(line);
+        getline(f, line, ','); // designation
+        b.setDesignation(line);
+
         if ((b.getUserName() == user) && (b.getPassword() == pass))
         {
+            break;
         }
         else
         {
-            b.setName("not_found");
+            string temp = "not_found";
+            b.setName(temp);
         }
     }
     f.close();
@@ -135,19 +170,42 @@ int login_menu()
             Faculty fac;
             fac = retrieve_faculty_account_file(inName, inPassword);
 
-            if ((std.getName() == "not_found" || fac.getName() == "not_found"))
-                cout
-                    << "incorrect name or password\n";
-            else
+            if (std.getName() != "not_found")
             {
                 cout << "Login Successful\n"
                      << "Welcome, "
                      << inName;
                 std.DisplayAccountData();
-                return 1;
+                system("pause");
+                visitor_menu();
             }
+            else if (fac.getName() == "not_found")
+            {
+                cout << "Login Successful\n"
+                     << "Welcome, "
+                     << inName;
+                std.DisplayAccountData();
+                system("pause");
+                admin_menu();
+            }
+            else
+            {
+                cout << "incorrect name or password\n";
+                system("pause");
+            }
+
+            // if ((std.getName() == "not_found") && (fac.getName() == "not_found"))
+            //     cout << "incorrect name or password\n";
+            // else
+            // {
+            //     cout << "Login Successful\n"
+            //          << "Welcome, "
+            //          << inName;
+            //     std.DisplayAccountData();
+            //     system("pause");
+            //     return 1;
+            // }
         }
         cout << "\n######################################\n\n";
-        system("pause");
     }
 }
