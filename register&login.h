@@ -127,15 +127,15 @@ int login_menu()
             getline(cin, inName);
             cout << "Enter Password: ";
             fflush(stdin);
-            getline(cin, inName);
+            getline(cin, inPassword);
 
             Student std;
-            std = retrieve_student_account_file(inName, inName);
+            std = retrieve_student_account_file(inName, inPassword);
 
             Faculty fac;
-            fac = retrieve_faculty_account_file(inName, inName);
+            fac = retrieve_faculty_account_file(inName, inPassword);
 
-            if (!(std.getName() == "not_found" || fac.getName() == "not_found"))
+            if ((std.getName() == "not_found" || fac.getName() == "not_found"))
                 cout
                     << "incorrect name or password\n";
             else

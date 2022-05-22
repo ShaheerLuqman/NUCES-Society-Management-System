@@ -95,25 +95,3 @@ public:
              << "\nDesignation: " << designation;
     };
 };
-class Alumni : public Account
-{
-private:
-    string graduating_year;
-
-public:
-    void Account_register()
-    {
-        Account::Account_register();
-        cout << "Student ID (e.g: 21K-XXXX): ";
-        fflush(stdin);
-        getline(cin, id);
-        cout << "Graduating Year: ";
-        cin >> graduating_year;
-    };
-    void DisplayAccountData()
-    {
-        Account::DisplayAccountData();
-        cout << "\nStudent ID: " << id
-             << "\nGraduating Year: " << graduating_year;
-    };
-};
