@@ -1,3 +1,4 @@
+#include <sstream>
 void admin_menu()
 {
     int choice;
@@ -48,7 +49,12 @@ void admin_menu()
         {
             Events event;
             event.get_event_data();
-            event.display_event_data();
+            add_event_file(event);
+            // event.get_event_data();
+            // add_event_file(event);
+            Events t = retrieve_events_file();
+            t.display_event_data();
+            system("pause");
         }
     }
 };

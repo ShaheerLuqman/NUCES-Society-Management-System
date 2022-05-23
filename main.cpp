@@ -64,9 +64,6 @@ int main()
             cout << "Welcome admin!";
             admin_menu();
         }
-        else if (choice == 4)
-        {
-        }
     }
     return 0;
 }
