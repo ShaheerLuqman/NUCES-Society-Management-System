@@ -54,6 +54,20 @@ public:
                 cout << "Wrong date Entered!\n";
         }
     }
+    int endOfMonth()
+    {
+        if ((month == 1 || month == 3 || month == 5 || month == 7 || month == 8 || month == 10 || month == 12))
+            return 31;
+        else if (month == 4 || month == 6 || month == 9 || month == 11)
+            return 30;
+        else if (month == 2)
+        {
+            if (year % 4 == 0)
+                return 29;
+            else
+                return 28;
+        }
+    }
 
     void setDay(int temp) { day = temp; }
     void setMonth(int temp) { month = temp; }
@@ -99,4 +113,29 @@ date current_date()
     currentdate.setYear((timePtr->tm_year) + 1900);
 
     return currentdate;
+}
+date operator+(const date &a, int b)
+{
+    date myDate = a;
+    int temp;
+
+    myDate.setDay(myDate.getDay() + b);
+
+    while (1)
+    {
+        if (myDate.getDay() > myDate.endOfMonth())
+        {
+            myDate.setDay(myDate.getDay() - myDate.endOfMonth());
+            myDate.setMonth(myDate.getMonth() + 1);
+
+            if (myDate.getMonth() > 12)
+            {
+                myDate.setMonth(1);
+                myDate.setYear(myDate.getYear() + 1);
+            }
+        }
+        else
+            break;
+    }
+    return myDate;
 }

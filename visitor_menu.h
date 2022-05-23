@@ -17,8 +17,7 @@ void visitor_menu()
              << "   2. Past Events\n"
              << "   3. Ongoing Events\n"
              << "   4. Future Events\n"
-             << "   3. Notifications\n"
-             << "   4. Important Dates\n"
+             << "   5. Notifications\n"
              << "   0. Back\n"
              << "Your Input: ";
         cin >> choice;
@@ -221,6 +220,11 @@ void visitor_menu()
         }
         else if (choice == 5)
         {
+            cout << "********* Upcoming Events *********" << endl;
+            display_upcoming_events();
+            cout << "************* Notices *************" << endl;
+            cout << "New App for Societies' info has been created";
+            system("pause");
         }
     }
 };

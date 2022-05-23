@@ -28,7 +28,7 @@ public:
      friend void visitor_menu();
      friend void add_event_file(Events &eve);
      friend Events retrieve_events_file(string evename);
-
+     friend void display_upcoming_events();
      void display_event_data()
      {
           // cout << string(50, '~') << endl;
@@ -111,5 +111,48 @@ Events retrieve_events_file(string evename)
                     return eve;
           }
           cout << "No record found!" << endl;
+     }
+}
+
+void display_upcoming_events()
+{
+     fstream f;
+     f.open("events.csv", ios::in);
+
+     Events eve;
+     if (!f.is_open())
+     {
+          cout << "could not open file\n";
+          exit(EXIT_FAILURE);
+     }
+     else
+     {
+          while (!f.eof())
+          {
+               string line;
+               getline(f, line, ',');
+               if (line.empty())
+               {
+                    break;
+               }
+               eve.event_name = line;
+               getline(f, line, ',');
+               eve.event_description = line;
+               getline(f, line, ',');
+               int a = stoi(line);
+               eve.event_date.setDay(a);
+               getline(f, line, ',');
+               int b = stoi(line);
+               eve.event_date.setMonth(b);
+               getline(f, line);
+               int c = stoi(line);
+               eve.event_date.setYear(c);
+               eve.determine_event_status();
+               date curr = current_date();
+               date sevendayslater = curr + 7;
+               if (compare_date(eve.event_date, curr) <= 2 && compare_date(eve.event_date, sevendayslater) == 3)
+                    eve.display_event_data();
+          }
+          f.close();
      }
 }
