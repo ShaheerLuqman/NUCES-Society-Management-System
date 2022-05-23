@@ -38,7 +38,6 @@ int main()
     while (1)
     {
         system("cls");
-        cout << string(50, '~') << endl;
         cout << "\nWelcome to Nuces Society Management System";
         cout << "\nPress\n"
              << "   1. Log In or Register\n"

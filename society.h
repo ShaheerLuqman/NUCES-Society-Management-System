@@ -54,7 +54,8 @@ public:
         number_of_events++;
         string name;
         cout << "Enter Event Name: ";
-        cin >> name;
+        fflush(stdin);
+        getline(cin, name);
         event_names[number_of_events - 1] = name;
     }
     void display_event_names()
@@ -162,4 +163,33 @@ society retrieve_society_account_file(string fname)
         }
     }
     return temp;
+};
+void society_menu(society t)
+{
+    int choice;
+    system("cls");
+    while (1)
+    {
+        cout << "Welcome! " << t.get_society_name();
+        cout << "\nPress\n"
+             << "   1. View Society Details\n"
+             << "   2. Add Member\n"
+             << "   3. Add Events\n"
+             << "   4. Important Dates\n"
+             << "   0. Back\n"
+             << "Your Input: ";
+        cin >> choice;
+        if (choice == 0)
+        {
+            return;
+        }
+        else if (choice == 1)
+        {
+            t.add_new_member();
+        }
+        else if (choice == 2)
+        {
+            t.add_new_event();
+        }
+    }
 };

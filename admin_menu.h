@@ -1,15 +1,15 @@
 void admin_menu()
 {
     int choice;
-    system("cls");
     while (1)
     {
+        system("cls");
         cout << "Welcome Admin";
         cout << "\nPress\n"
              << "   1. Create New Society\n"
-             << "   2. Enter an Event\n"
+             << "   2. Manage Society\n"
              << "   3. Current Date And Time\n"
-             << "   4. Test\n" // new society,
+             << "   4. Test\n"
              << "   0. Back\n"
              << "Your Input: ";
         cin >> choice;
@@ -19,12 +19,27 @@ void admin_menu()
         }
         else if (choice == 1)
         {
+            society test;
+            test.NewSociety();
+            add_society_account_file(test);
         }
         else if (choice == 2)
         {
-            Events event;
-            event.get_event_data();
-            event.display_event_data();
+            society t;
+            string temp;
+            cout << "Enter the name of society you want to manage: ";
+            fflush(stdin);
+            getline(cin, temp);
+
+            t = retrieve_society_account_file(temp);
+            if (t.get_society_name() != "")
+                society_menu(t);
+            else
+                system("pause");
+            // t.display_society();
+            // Events event;
+            // event.get_event_data();
+            // event.display_event_data();
         }
         else if (choice == 3)
         {
