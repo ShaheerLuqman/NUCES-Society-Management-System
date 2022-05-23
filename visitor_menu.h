@@ -47,14 +47,20 @@ void visitor_menu()
                     cout << "   " << i + 1 << ". " << temp << endl;
                     i++;
                 }
+                f.close();
+                f.open("society.csv", ios::in);
                 cout << "Your Input: ";
                 cin >> ch;
                 for (int i = 0; i < ch; i++)
                 {
+                    // cout << i;
                     getline(f, temp);
                 }
-                cout << temp;
+                // cout << temp;
                 f.close();
+                society t = retrieve_society_account_file(temp);
+                t.display_society();
+                system("pause");
             }
         }
     }
