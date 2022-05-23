@@ -21,7 +21,7 @@ public:
           event_date.inputdate();
           // cout << string(50, '~') << endl;
      }
-
+     string get_event_name() { return event_name; }
      friend void add_event_file(Events &eve);
      friend Events retrieve_events_file();
 
