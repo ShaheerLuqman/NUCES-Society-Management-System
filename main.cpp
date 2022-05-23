@@ -46,6 +46,7 @@ int main()
         cout << "\nPress\n"
              << "   1. Log In or Register\n"
              << "   2. Continue as Guest\n"
+             << "   3. Continue as Admin\n"
              << "   0. Exit\n"
              << "Your Input: ";
         cin >> choice;
