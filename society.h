@@ -42,6 +42,7 @@ public:
         cout << "Society Name: " << society_name
              << "\nSociety Description : " << society_description
              << "\nNumber Of Events: " << number_of_events
+             << "\nNumber Of Members: " << number_of_members
              << "\n\nEvents: \n";
         for (int i = 0; i < number_of_events; i++)
             cout << "\t" << event_names[i] << endl;
@@ -175,7 +176,6 @@ void society_menu(society t)
              << "   1. View Society Details\n"
              << "   2. Add Member\n"
              << "   3. Add Events\n"
-             << "   4. Important Dates\n"
              << "   0. Back\n"
              << "Your Input: ";
         cin >> choice;
@@ -185,11 +185,17 @@ void society_menu(society t)
         }
         else if (choice == 1)
         {
-            t.add_new_member();
+            t.display_society();
         }
         else if (choice == 2)
         {
+            t.add_new_member();
+            add_society_account_file(t);
+        }
+        else if (choice == 3)
+        {
             t.add_new_event();
+            add_society_account_file(t);
         }
     }
 };

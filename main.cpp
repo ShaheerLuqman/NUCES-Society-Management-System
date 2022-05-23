@@ -61,7 +61,7 @@ int main()
         }
         else if (choice == 3)
         {
-            cout << "Welcome admn!";
+            cout << "Welcome admin!";
             admin_menu();
         }
         else if (choice == 4)

@@ -177,7 +177,7 @@ int login_menu()
                      << "Welcome "
                      << fac.getName() << endl;
                 system("pause");
-                admin_menu();
+                visitor_menu();
                 return 1;
             }
             if ((std.getName() == "not_found") && (fac.getName() == "not_found"))
