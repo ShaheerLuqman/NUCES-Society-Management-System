@@ -112,7 +112,7 @@ int login_menu()
         cout << "Press\n"
              << "   1. Register\n"
              << "   2. Login\n"
-             << "   0. Exit\n"
+             << "   0. Back\n"
              << "Your Input: ";
         cin >> choice;
 

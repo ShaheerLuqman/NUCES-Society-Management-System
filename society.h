@@ -39,10 +39,13 @@ public:
              << "\nNumber Of Members: " << number_of_members
              << "\n\nEvents: \n";
         for (int i = 0; i < number_of_events; i++)
-            cout << "\t" << event_names[i] << endl;
-        cout << "Members:" << endl;
+            cout << "   " << i + 1 << ". " << event_names[i] << endl;
+        cout << endl
+             << setw(32) << left << "Member Names"
+             << setw(32) << left << "Member Role"
+             << setw(32) << left << "Member ID" << endl;
         for (int i = 0; i < number_of_members; i++)
-            cout << member_names[i][0] << "\t" << member_names[i][1] << "\t" << member_names[i][2] << endl;
+            cout << setw(32) << left << member_names[i][0] << setw(32) << left << member_names[i][1] << setw(32) << left << member_names[i][2] << endl;
     }
     void add_new_event()
     {
