@@ -220,10 +220,10 @@ void visitor_menu()
         }
         else if (choice == 5)
         {
-            cout << "********* Upcoming Events *********" << endl;
+            cout << "**********  Upcoming Events  **********" << endl;
             display_upcoming_events();
-            cout << "************* Notices *************" << endl;
-            cout << "New App for Societies' info has been created";
+            cout << "\n*************  Notices  *************" << endl;
+            cout << "Type your notice here!" << endl;
             system("pause");
         }
     }
