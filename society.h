@@ -12,7 +12,6 @@ protected:
 public:
     string event_names[Max_number_of_events];
     string member_names[Max_number_of_members][3];
-
     string get_society_name() { return society_name; };
     void set_society_name(string n) { society_name = n; };
     string get_society_description() { return society_description; };
@@ -32,7 +31,6 @@ public:
         fflush(stdin);
         getline(cin, society_description);
     }
-
     void display_society()
     {
         cout << "Society Name: " << society_name
@@ -91,13 +89,16 @@ void add_society_account_file(society &soc)
             file_name[i] = '_';
     }
     fstream f(file_name, ios::out);
-    if (!f.is_open())
+    fstream g("society.csv", ios::app);
+    if (!f.is_open() || !g.is_open())
     {
+
         cout << "could not open file\n";
         exit(EXIT_FAILURE);
     }
     else
     {
+        g << soc.get_society_name() << endl;
         f << soc.get_society_name() << endl
           << soc.get_society_description() << endl
           << soc.get_number_of_events() << endl
@@ -109,6 +110,7 @@ void add_society_account_file(society &soc)
         for (int i = 0; i < soc.get_number_of_members(); i++)
             f << soc.member_names[i][0] << ',' << soc.member_names[i][1] << ',' << soc.member_names[i][2] << endl;
         f.close();
+        g.close();
     }
 };
 

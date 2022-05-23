@@ -26,6 +26,36 @@ void visitor_menu()
         }
         else if (choice == 1)
         {
+            int ch;
+            fstream f("society.csv", ios::in);
+            if (!f.is_open() && f.fail())
+            {
+                cout << "\nNo record of society found\n";
+                f.close();
+            }
+            else
+            {
+                cout << "\nPress\n";
+                int i = 0;
+                string temp;
+                while (!f.eof())
+                {
+                    getline(f, temp);
+                    if (temp.empty())
+                        break;
+
+                    cout << "   " << i + 1 << ". " << temp << endl;
+                    i++;
+                }
+                cout << "Your Input: ";
+                cin >> ch;
+                for (int i = 0; i < ch; i++)
+                {
+                    getline(f, temp);
+                }
+                cout << temp;
+                f.close();
+            }
         }
     }
 };

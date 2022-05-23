@@ -5,6 +5,10 @@ Partially Done:
     ● Information Regarding Events (Past, Ongoing and Future)
     ● Duration of Events
     ● change all string functions with cin to getline
+    Calendar
+    Notifications section
+    Classification of Events wrt date
+    Logged in acc can update their profile.
 
 To be done later:
     ● Allocation of accessibility to different accounts (example, Personal accounts can be updated
