@@ -9,8 +9,7 @@ void admin_menu()
         cout << "\nPress\n"
              << "   1. Create New Society\n"
              << "   2. Manage Society\n"
-             << "   3. Today's Date\n"
-             << "   4. View Event Details\n"
+             << "   3. View Event Details\n"
              << "   0. Back\n"
              << "Your Input: ";
         cin >> choice;
@@ -39,13 +38,6 @@ void admin_menu()
                 system("pause");
         }
         else if (choice == 3)
-        {
-            date current;
-            current = current_date();
-            current.displaydate();
-            system("pause");
-        }
-        else if (choice == 4)
         {
             string temp;
             cout << "Enter the name of event: ";

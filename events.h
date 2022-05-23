@@ -95,15 +95,12 @@ Events retrieve_events_file(string evename)
                getline(f, line, ',');
                eve.event_description = line;
                getline(f, line, ',');
-               cout << "testing" << endl;
                int a = stoi(line);
                eve.event_date.setDay(a);
                getline(f, line, ',');
-               cout << "testing" << endl;
                int b = stoi(line);
                eve.event_date.setMonth(b);
                getline(f, line);
-               cout << "testing" << endl;
                int c = stoi(line);
                eve.event_date.setYear(c);
                if (eve.event_name == evename)

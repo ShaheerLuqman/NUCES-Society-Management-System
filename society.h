@@ -2,10 +2,6 @@
 #define Max_number_of_members 20
 #define Max_number_of_events 20
 
-/*
-create new event
-*/
-
 class society
 {
 protected:
