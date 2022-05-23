@@ -23,7 +23,7 @@ public:
      }
      string get_event_name() { return event_name; }
      friend void add_event_file(Events &eve);
-     friend Events retrieve_events_file();
+     friend Events retrieve_events_file(string evename);
 
      void display_event_data()
      {
@@ -65,7 +65,7 @@ void add_event_file(Events &eve)
           f.close();
      }
 };
-Events retrieve_events_file()
+Events retrieve_events_file(string evename)
 {
      fstream f;
      f.open("events.csv", ios::in);
@@ -82,19 +82,33 @@ Events retrieve_events_file()
           {
                string line;
                getline(f, line, ',');
+               if (line.empty())
+               {
+                    eve.event_name = "";
+                    eve.event_description = "";
+                    eve.event_date.setDay(0);
+                    eve.event_date.setMonth(0);
+                    eve.event_date.setYear(0);
+                    break;
+               }
                eve.event_name = line;
                getline(f, line, ',');
                eve.event_description = line;
                getline(f, line, ',');
+               cout << "testing" << endl;
                int a = stoi(line);
                eve.event_date.setDay(a);
                getline(f, line, ',');
+               cout << "testing" << endl;
                int b = stoi(line);
                eve.event_date.setMonth(b);
                getline(f, line);
+               cout << "testing" << endl;
                int c = stoi(line);
                eve.event_date.setYear(c);
-               return eve;
+               if (eve.event_name == evename)
+                    return eve;
           }
+          cout << "No record found!" << endl;
      }
 }

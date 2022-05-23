@@ -50,15 +50,6 @@ public:
         for (int i = 0; i < number_of_members; i++)
             cout << member_names[i][0] << "\t" << member_names[i][1] << "\t" << member_names[i][2] << endl;
     }
-    // void add_new_event()
-    // {
-    //     number_of_events++;
-    //     string name;
-    //     cout << "Enter Event Name: ";
-    //     fflush(stdin);
-    //     getline(cin, name);
-    //     event_names[number_of_events - 1] = name;
-    // }
     void add_new_event()
     {
         number_of_events++;

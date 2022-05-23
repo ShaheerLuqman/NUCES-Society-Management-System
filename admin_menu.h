@@ -10,7 +10,7 @@ void admin_menu()
              << "   1. Create New Society\n"
              << "   2. Manage Society\n"
              << "   3. Today's Date\n"
-             << "   4. Create New Event\n"
+             << "   4. View Event Details\n"
              << "   0. Back\n"
              << "Your Input: ";
         cin >> choice;
@@ -47,12 +47,11 @@ void admin_menu()
         }
         else if (choice == 4)
         {
-            Events event;
-            event.get_event_data();
-            add_event_file(event);
-            // event.get_event_data();
-            // add_event_file(event);
-            Events t = retrieve_events_file();
+            string temp;
+            cout << "Enter the name of event: ";
+            fflush(stdin);
+            getline(cin, temp);
+            Events t = retrieve_events_file(temp);
             t.display_event_data();
             system("pause");
         }
