@@ -34,6 +34,7 @@ using namespace std;
 #include "society.h"
 #include "admin_menu.h"
 #include "visitor_menu.h"
+#include "member_menu.h"
 #include "register&login.h"
 
 int main()

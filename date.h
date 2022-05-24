@@ -75,7 +75,7 @@ public:
     int getDay() { return day; }
     int getMonth() { return month; }
     int getYear() { return year; }
-    void displaydate() { cout << setfill('0') << setw(2) << day << "/" << setfill('0') << setw(2) << month << "/" << setfill('0') << setw(4) << year << endl; }
+    void displaydate() { cout << setfill('0') << right << setw(2) << day << "/" << setfill('0') << setw(2) << month << "/" << setfill('0') << setw(4) << year << setfill(' ') << endl; }
 };
 
 int compare_date(date &d1, date &d2)

@@ -26,6 +26,7 @@ public:
      }
      string get_event_name() { return event_name; }
      friend void visitor_menu();
+     friend void member_menu();
      friend void add_event_file(Events &eve);
      friend Events retrieve_events_file(string evename);
      friend void display_upcoming_events();
