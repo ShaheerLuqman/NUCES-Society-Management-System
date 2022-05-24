@@ -1,16 +1,3 @@
-/*
-OBJECTIVES:
-Partially Done:
-    ● change all string functions with cin to getline
-    ● Logged in acc can update their profile.
-
-To be done later:
-    ● Allocation of accessibility to different accounts (example, Personal accounts can be updated
-        by the people personally, Society head can update info regarding their society, etc.)
-    ● Evaluation of the applicants on the basis of information provided by applicants (It will help
-        faculty/Society managers in considering who should be the best candidate)
-*/
-
 #include <iostream>
 #include <string>
 #include <iomanip>
