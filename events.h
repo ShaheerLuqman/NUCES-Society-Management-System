@@ -161,6 +161,13 @@ void display_upcoming_events()
           f.close();
      }
 }
+void display_notifications()
+{
+     display_upcoming_events();
+     cout << "\n*************  Notices  *************" << endl;
+     cout << "Type your notice here!" << endl;
+     system("pause");
+}
 void display_future_events()
 {
      fstream f;

@@ -216,3 +216,41 @@ void society_menu(society t)
         }
     }
 };
+
+void display_society_details()
+{
+    int ch;
+    fstream f("society.csv", ios::in);
+    if (!f.is_open() && f.fail())
+    {
+        cout << "\nNo record of society found\n";
+        f.close();
+    }
+    else
+    {
+        cout << "\nPress\n";
+        int i = 0;
+        string temp;
+        while (!f.eof())
+        {
+            getline(f, temp);
+            if (temp.empty())
+                break;
+
+            cout << "   " << i + 1 << ". " << temp << endl;
+            i++;
+        }
+        f.close();
+        f.open("society.csv", ios::in);
+        cout << "Your Input: ";
+        cin >> ch;
+        for (int i = 0; i < ch; i++)
+        {
+            getline(f, temp);
+        }
+        f.close();
+        society t = retrieve_society_account_file(temp);
+        t.display_society();
+        system("pause");
+    }
+}

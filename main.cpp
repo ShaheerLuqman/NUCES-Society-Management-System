@@ -2,7 +2,7 @@
 OBJECTIVES:
 Partially Done:
     ● change all string functions with cin to getline
-    Logged in acc can update their profile.
+    ● Logged in acc can update their profile.
 
 To be done later:
     ● Allocation of accessibility to different accounts (example, Personal accounts can be updated
@@ -28,6 +28,7 @@ using namespace std;
 #include "visitor_menu.h"
 #include "member_menu.h"
 #include "register&login.h"
+#include "apply_society.h"
 
 int main()
 {
@@ -35,7 +36,7 @@ int main()
     while (1)
     {
         system("cls");
-        cout << "\nWelcome to Nuces Society Management System";
+        cout << "Welcome to Nuces Society Management System";
         cout << "\nPress\n"
              << "   1. Log In or Register\n"
              << "   2. Continue as Guest\n"

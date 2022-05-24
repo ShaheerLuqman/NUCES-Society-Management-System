@@ -8,7 +8,12 @@ void add_student_account_file(Student &std)
     }
     else
     {
-        f << std.getUserName() << "," << std.getPassword() << "," << std.getName() << "," << std.getEmail() << "," << std.getID() << "," << std.getCGPA() << endl;
+        f << std.getUserName() << ","
+          << std.getPassword() << ","
+          << std.getName() << ","
+          << std.getEmail() << ","
+          << std.getID() << ","
+          << std.getCGPA() << endl;
         f.close();
     }
 };
@@ -142,7 +147,6 @@ int login_menu()
         }
         else if (choice == 2) // Login
         {
-
             cout << "\n*********** Account Login ***********\n"
                  << "Enter Username: ";
             fflush(stdin);
@@ -168,7 +172,7 @@ int login_menu()
                      << "Welcome, "
                      << std.getName() << endl;
                 system("pause");
-                member_menu();
+                member_menu(std);
                 return 1;
             }
             if (fac.getName() != "not_found")
@@ -177,7 +181,7 @@ int login_menu()
                      << "Welcome "
                      << fac.getName() << endl;
                 system("pause");
-                visitor_menu();
+                member_menu(fac);
                 return 1;
             }
             if ((std.getName() == "not_found") && (fac.getName() == "not_found"))

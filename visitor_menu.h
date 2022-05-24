@@ -27,46 +27,11 @@ void visitor_menu()
         }
         else if (choice == 1)
         {
-            int ch;
-            fstream f("society.csv", ios::in);
-            if (!f.is_open() && f.fail())
-            {
-                cout << "\nNo record of society found\n";
-                f.close();
-            }
-            else
-            {
-                cout << "\nPress\n";
-                int i = 0;
-                string temp;
-                while (!f.eof())
-                {
-                    getline(f, temp);
-                    if (temp.empty())
-                        break;
-
-                    cout << "   " << i + 1 << ". " << temp << endl;
-                    i++;
-                }
-                f.close();
-                f.open("society.csv", ios::in);
-                cout << "Your Input: ";
-                cin >> ch;
-                for (int i = 0; i < ch; i++)
-                {
-                    // cout << i;
-                    getline(f, temp);
-                }
-                // cout << temp;
-                f.close();
-                society t = retrieve_society_account_file(temp);
-                t.display_society();
-                system("pause");
-            }
+            display_society_details();
         }
         else if (choice == 2)
         {
-            void display_past_events();
+            display_past_events();
         }
         else if (choice == 3)
         {
@@ -78,10 +43,7 @@ void visitor_menu()
         }
         else if (choice == 5)
         {
-            display_upcoming_events();
-            cout << "\n*************  Notices  *************" << endl;
-            cout << "Type your notice here!" << endl;
-            system("pause");
+            display_notifications();
         }
     }
 };
