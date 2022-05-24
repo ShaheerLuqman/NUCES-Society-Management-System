@@ -7,7 +7,6 @@ Partially Done:
 To be done later:
     ● Allocation of accessibility to different accounts (example, Personal accounts can be updated
         by the people personally, Society head can update info regarding their society, etc.)
-    ● Registration process for students to apply for society’s membership.
     ● Evaluation of the applicants on the basis of information provided by applicants (It will help
         faculty/Society managers in considering who should be the best candidate)
 */
@@ -26,9 +25,9 @@ using namespace std;
 #include "society.h"
 #include "admin_menu.h"
 #include "visitor_menu.h"
+#include "apply_society.h"
 #include "member_menu.h"
 #include "register&login.h"
-#include "apply_society.h"
 
 int main()
 {

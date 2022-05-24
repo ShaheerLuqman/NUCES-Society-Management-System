@@ -1,10 +1,3 @@
-/*
-society details
-calender
-login check for society membership
-registeration form
-*/
-
 void member_menu(Student &std)
 {
     int choice;
@@ -50,6 +43,8 @@ void member_menu(Student &std)
         {
             Application app(std);
             app.apply_to_society();
+            app.display_application();
+            system("pause");
         }
     }
 };

@@ -91,4 +91,13 @@ public:
         }
         get_skills();
     }
+    void display_application()
+    {
+        std.DisplayAccountData();
+        cout << "Society Applying to: " << society_name << endl
+             << "Past Experience (Number of Semesters): " << past_experience << endl
+             << "Communications Skill Rating (out of 5): " << communication_skill << endl
+             << "Management Skills Rating (out of 5): " << communication_skill << endl
+             << "Interpersonal Skills Rating (out of 5): " << communication_skill << endl;
+    }
 };
