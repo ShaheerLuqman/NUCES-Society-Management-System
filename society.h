@@ -184,6 +184,7 @@ void society_menu(society t)
     system("cls");
     while (1)
     {
+        system("cls");
         cout << "Welcome! " << t.get_society_name();
         cout << "\nPress\n"
              << "   1. View Society Details\n"
@@ -199,16 +200,19 @@ void society_menu(society t)
         else if (choice == 1)
         {
             t.display_society();
+            system("pause");
         }
         else if (choice == 2)
         {
             t.add_new_member();
             add_society_account_file(t);
+            system("pause");
         }
         else if (choice == 3)
         {
             t.add_new_event();
             add_society_account_file(t);
+            system("pause");
         }
     }
 };
