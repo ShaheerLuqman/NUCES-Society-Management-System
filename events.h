@@ -131,6 +131,7 @@ void display_upcoming_events()
      }
      else
      {
+          cout << "**********  Upcoming Events  **********" << endl;
           while (!f.eof())
           {
                string line;

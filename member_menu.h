@@ -78,7 +78,6 @@ void member_menu()
         }
         else if (choice == 5)
         {
-            cout << "**********  Upcoming Events  **********" << endl;
             display_upcoming_events();
             cout << "\n*************  Notices  *************" << endl;
             cout << "Type your notice here!" << endl;
