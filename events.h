@@ -25,11 +25,14 @@ public:
           // cout << string(50, '~') << endl;
      }
      string get_event_name() { return event_name; }
-     friend void visitor_menu();
-     friend void member_menu();
+     // friend void visitor_menu();
+     // friend void member_menu();
      friend void add_event_file(Events &eve);
      friend Events retrieve_events_file(string evename);
      friend void display_upcoming_events();
+     friend void display_future_events();
+     friend void display_ongoing_events();
+     friend void display_past_events();
      void display_event_data()
      {
           // cout << string(50, '~') << endl;
@@ -155,5 +158,158 @@ void display_upcoming_events()
                     eve.display_event_data();
           }
           f.close();
+     }
+}
+void display_future_events()
+{
+     fstream f;
+     f.open("events.csv", ios::in);
+     bool flag = false;
+
+     Events eve;
+     if (!f.is_open())
+     {
+          cout << "could not open file\n";
+          exit(EXIT_FAILURE);
+     }
+     else
+     {
+          while (!f.eof())
+          {
+               string line;
+               getline(f, line, ',');
+               if (line.empty())
+               {
+                    eve.event_name = "";
+                    eve.event_description = "";
+                    eve.event_date.setDay(0);
+                    eve.event_date.setMonth(0);
+                    eve.event_date.setYear(0);
+                    break;
+               }
+               eve.event_name = line;
+               getline(f, line, ',');
+               eve.event_description = line;
+               getline(f, line, ',');
+               int a = stoi(line);
+               eve.event_date.setDay(a);
+               getline(f, line, ',');
+               int b = stoi(line);
+               eve.event_date.setMonth(b);
+               getline(f, line);
+               int c = stoi(line);
+               eve.event_date.setYear(c);
+               eve.determine_event_status();
+               if (eve.event_status == "future")
+               {
+                    eve.display_event_data();
+                    flag = true;
+               }
+          }
+          if (flag == false)
+               cout << "No Future Events" << endl;
+          system("pause");
+     }
+}
+void display_ongoing_events()
+{
+     fstream f;
+     f.open("events.csv", ios::in);
+     bool flag = false;
+
+     Events eve;
+     if (!f.is_open())
+     {
+          cout << "could not open file\n";
+          exit(EXIT_FAILURE);
+     }
+     else
+     {
+          while (!f.eof())
+          {
+               string line;
+               getline(f, line, ',');
+               if (line.empty())
+               {
+                    eve.event_name = "";
+                    eve.event_description = "";
+                    eve.event_date.setDay(0);
+                    eve.event_date.setMonth(0);
+                    eve.event_date.setYear(0);
+                    break;
+               }
+               eve.event_name = line;
+               getline(f, line, ',');
+               eve.event_description = line;
+               getline(f, line, ',');
+               int a = stoi(line);
+               eve.event_date.setDay(a);
+               getline(f, line, ',');
+               int b = stoi(line);
+               eve.event_date.setMonth(b);
+               getline(f, line);
+               int c = stoi(line);
+               eve.event_date.setYear(c);
+               eve.determine_event_status();
+               if (eve.event_status == "ongoing")
+               {
+                    eve.display_event_data();
+                    flag = true;
+               }
+          }
+          if (flag == false)
+               cout << "No Ongoing Events" << endl;
+          system("pause");
+     }
+}
+void display_past_events()
+{
+     fstream f;
+     f.open("events.csv", ios::in);
+     bool flag = false;
+
+     Events eve;
+     if (!f.is_open())
+     {
+          cout << "could not open file\n";
+          exit(EXIT_FAILURE);
+     }
+     else
+     {
+          while (!f.eof())
+          {
+               string line;
+               getline(f, line, ',');
+               if (line.empty())
+               {
+                    eve.event_name = "";
+                    eve.event_description = "";
+                    eve.event_date.setDay(0);
+                    eve.event_date.setMonth(0);
+                    eve.event_date.setYear(0);
+                    break;
+               }
+               eve.event_name = line;
+               getline(f, line, ',');
+               eve.event_description = line;
+               getline(f, line, ',');
+               int a = stoi(line);
+               eve.event_date.setDay(a);
+               getline(f, line, ',');
+               int b = stoi(line);
+               eve.event_date.setMonth(b);
+               getline(f, line);
+               int c = stoi(line);
+               eve.event_date.setYear(c);
+               eve.determine_event_status();
+               if (eve.event_status == "past")
+               {
+                    eve.display_event_data();
+                    flag = true;
+               }
+          }
+          if (flag == false)
+               cout << "No Past Events" << endl;
+          system("pause");
      }
 }
