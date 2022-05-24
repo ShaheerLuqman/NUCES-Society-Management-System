@@ -1,20 +1,12 @@
 /*
 OBJECTIVES:
 Partially Done:
-    ● Account registry
-    ● Information Regarding Events (Past, Ongoing and Future)
-    ● Duration of Events
     ● change all string functions with cin to getline
-    Calendar
-    Notifications section
-    Classification of Events wrt date
     Logged in acc can update their profile.
 
 To be done later:
     ● Allocation of accessibility to different accounts (example, Personal accounts can be updated
         by the people personally, Society head can update info regarding their society, etc.)
-    ● Calendar (to display important dates)
-    ● Notifications (to notify users about upcoming events and deadlines.)
     ● Registration process for students to apply for society’s membership.
     ● Evaluation of the applicants on the basis of information provided by applicants (It will help
         faculty/Society managers in considering who should be the best candidate)

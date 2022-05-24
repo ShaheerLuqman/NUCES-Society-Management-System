@@ -92,16 +92,14 @@ void add_society_account_file(society &soc)
             file_name[i] = '_';
     }
     fstream f(file_name, ios::out);
-    fstream g("society.csv", ios::app);
+    fstream g("society.csv", ios::in | ios::app);
     if (!f.is_open() || !g.is_open())
     {
-
         cout << "could not open file\n";
         exit(EXIT_FAILURE);
     }
     else
     {
-        g << soc.get_society_name() << endl;
         f << soc.get_society_name() << endl
           << soc.get_society_description() << endl
           << soc.get_number_of_events() << endl
@@ -113,7 +111,22 @@ void add_society_account_file(society &soc)
         for (int i = 0; i < soc.get_number_of_members(); i++)
             f << soc.member_names[i][0] << ',' << soc.member_names[i][1] << ',' << soc.member_names[i][2] << endl;
         f.close();
+        bool flag = false;
+        string line;
+        fstream g("society.csv", ios::in);
+        while (!g.eof())
+        {
+            getline(g, line);
+            if (line == soc.get_society_name())
+                flag = true;
+        }
         g.close();
+        if (flag == false)
+        {
+            fstream g("society.csv", ios::app);
+            g << soc.get_society_name() << endl;
+            g.close();
+        }
     }
 };
 
