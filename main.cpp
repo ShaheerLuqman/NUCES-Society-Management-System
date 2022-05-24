@@ -22,10 +22,11 @@ using namespace std;
 #include "accounts.h"
 #include "date.h"
 #include "events.h"
+#include "apply_society.h"
 #include "society.h"
 #include "admin_menu.h"
 #include "visitor_menu.h"
-#include "apply_society.h"
+
 #include "member_menu.h"
 #include "register&login.h"
 

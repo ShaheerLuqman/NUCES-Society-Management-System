@@ -190,6 +190,7 @@ void society_menu(society t)
              << "   1. View Society Details\n"
              << "   2. Add Member\n"
              << "   3. Add Events\n"
+             << "   4. View Applied Member Details\n"
              << "   0. Back\n"
              << "Your Input: ";
         cin >> choice;
@@ -213,6 +214,10 @@ void society_menu(society t)
             t.add_new_event();
             add_society_account_file(t);
             system("pause");
+        }
+        else if (choice == 4)
+        {
+            display_all_applications(t.get_society_name());
         }
     }
 };

@@ -63,7 +63,8 @@ void member_menu(Faculty &fac)
              << "   3. Ongoing Events\n"
              << "   4. Future Events\n"
              << "   5. Notifications\n"
-             << "   6. Applications For Society\n"
+             << "   6. Applications Recieved For Society\n"
+             << "   7. All Applications Recieved For Society\n"
              << "   0. Back\n"
              << "Your Input: ";
         cin >> choice;
@@ -93,6 +94,13 @@ void member_menu(Faculty &fac)
         }
         else if (choice == 6)
         {
+            Application app(retrieve_application_file());
+            app.display_application();
+            system("pause");
+        }
+        else if (choice == 7)
+        {
+            display_all_applications();
         }
     }
 };

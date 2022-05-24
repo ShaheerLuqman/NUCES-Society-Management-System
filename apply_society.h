@@ -9,6 +9,11 @@ private:
     int interpersonal_skill; // 1 to 5
 
 public:
+    void set_society_name(string temp) { society_name = temp; }
+    void set_past_experience(int temp) { past_experience = temp; }
+    void set_communication_skill(int temp) { communication_skill = temp; }
+    void set_management_skill(int temp) { management_skill = temp; }
+    void set_interpersonal_skill(int temp) { interpersonal_skill = temp; }
     Application(Student &std) : std(std){};
     void get_skills()
     {
@@ -125,3 +130,154 @@ public:
         }
     };
 };
+Application retrieve_application_file()
+{
+    ifstream f("Applications.csv", ios::in);
+    if (!f.is_open())
+    {
+        cout << "could not open file\n";
+        exit(EXIT_FAILURE);
+    }
+    else
+    {
+        string soc;
+        getline(f, soc, ',');
+        Student std;
+        string line;
+        getline(f, line, ','); // username
+        std.setUserName(line);
+        getline(f, line, ','); // pass
+        std.setPassword(line);
+        getline(f, line, ','); // name
+        std.setName(line);
+        getline(f, line, ','); // email
+        std.setEmail(line);
+        getline(f, line, ','); // id
+        std.setID(line);
+        getline(f, line, ','); // cgpa
+        std.setCGPA(line);
+        Application temp(std);
+        temp.set_society_name(soc);
+        int a;
+        getline(f, line, ',');
+        a = stoi(line);
+        temp.set_past_experience(a);
+        getline(f, line, ',');
+        a = stoi(line);
+        temp.set_communication_skill(a);
+        getline(f, line, ',');
+        a = stoi(line);
+        temp.set_management_skill(a);
+        getline(f, line, ',');
+        a = stoi(line);
+        temp.set_interpersonal_skill(a);
+        f.close();
+        return temp;
+    }
+}
+void display_all_applications()
+{
+    ifstream f("Applications.csv", ios::in);
+    if (!f.is_open())
+    {
+        cout << "could not open file\n";
+        exit(EXIT_FAILURE);
+    }
+    else
+    {
+        while (!f.eof())
+        {
+            string soc;
+            getline(f, soc, ',');
+            if (soc.empty())
+                break;
+            Student std;
+            string line;
+            getline(f, line, ','); // username
+            std.setUserName(line);
+            getline(f, line, ','); // pass
+            std.setPassword(line);
+            getline(f, line, ','); // name
+            std.setName(line);
+            getline(f, line, ','); // email
+            std.setEmail(line);
+            getline(f, line, ','); // id
+            std.setID(line);
+            getline(f, line, ','); // cgpa
+            std.setCGPA(line);
+            Application temp(std);
+            temp.set_society_name(soc);
+            int a;
+            getline(f, line, ',');
+            a = stoi(line);
+            temp.set_past_experience(a);
+            getline(f, line, ',');
+            a = stoi(line);
+            temp.set_communication_skill(a);
+            getline(f, line, ',');
+            a = stoi(line);
+            temp.set_management_skill(a);
+            getline(f, line);
+            a = stoi(line);
+            temp.set_interpersonal_skill(a);
+
+            temp.display_application();
+            cout << endl;
+        }
+    }
+    system("pause");
+    f.close();
+}
+void display_all_applications(string sname)
+{
+    ifstream f("Applications.csv", ios::in);
+    if (!f.is_open())
+    {
+        cout << "could not open file\n";
+        exit(EXIT_FAILURE);
+    }
+    else
+    {
+        while (!f.eof())
+        {
+            string soc;
+            getline(f, soc, ',');
+            if (soc.empty())
+                break;
+            Student std;
+            string line;
+            getline(f, line, ','); // username
+            std.setUserName(line);
+            getline(f, line, ','); // pass
+            std.setPassword(line);
+            getline(f, line, ','); // name
+            std.setName(line);
+            getline(f, line, ','); // email
+            std.setEmail(line);
+            getline(f, line, ','); // id
+            std.setID(line);
+            getline(f, line, ','); // cgpa
+            std.setCGPA(line);
+            Application temp(std);
+            temp.set_society_name(soc);
+            int a;
+            getline(f, line, ',');
+            a = stoi(line);
+            temp.set_past_experience(a);
+            getline(f, line, ',');
+            a = stoi(line);
+            temp.set_communication_skill(a);
+            getline(f, line, ',');
+            a = stoi(line);
+            temp.set_management_skill(a);
+            getline(f, line);
+            a = stoi(line);
+            temp.set_interpersonal_skill(a);
+            if (soc == sname)
+                temp.display_application();
+            cout << endl;
+        }
+    }
+    system("pause");
+    f.close();
+}
