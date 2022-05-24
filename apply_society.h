@@ -100,4 +100,28 @@ public:
              << "Management Skills Rating (out of 5): " << communication_skill << endl
              << "Interpersonal Skills Rating (out of 5): " << communication_skill << endl;
     }
+    void add_application_file()
+    {
+        ofstream f("Applications.csv", ios::app);
+        if (!f.is_open())
+        {
+            cout << "could not open file\n";
+            exit(EXIT_FAILURE);
+        }
+        else
+        {
+            f << society_name << ","
+              << std.getUserName() << ","
+              << std.getPassword() << ","
+              << std.getName() << ","
+              << std.getEmail() << ","
+              << std.getID() << ","
+              << std.getCGPA() << ","
+              << past_experience << ","
+              << communication_skill << ","
+              << management_skill << ","
+              << interpersonal_skill << endl;
+            f.close();
+        }
+    };
 };

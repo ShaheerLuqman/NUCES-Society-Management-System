@@ -44,6 +44,7 @@ void member_menu(Student &std)
             Application app(std);
             app.apply_to_society();
             app.display_application();
+            app.add_application_file();
             system("pause");
         }
     }
