@@ -1,10 +1,3 @@
-/*
-society details
-calender
-login check for society membership
-registeration form
-*/
-
 void visitor_menu()
 {
     string choice;
