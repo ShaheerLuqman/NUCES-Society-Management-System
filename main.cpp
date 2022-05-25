@@ -20,7 +20,7 @@ using namespace std;
 
 int main()
 {
-    int choice;
+    string choice;
     while (1)
     {
         system("cls");
@@ -28,25 +28,25 @@ int main()
         cout << "\nPress\n"
              << "   1. Log In or Register\n"
              << "   2. Continue as Guest\n"
-             << "   3. Continue as Admin\n"
+             //  << "   3. Continue as Admin\n"
              << "   0. Exit\n"
              << "Your Input: ";
         cin >> choice;
-        if (choice == 0)
+        if (choice == "0")
         {
             exit(EXIT_SUCCESS);
         }
-        else if (choice == 1)
+        else if (choice == "1")
         {
             system("cls");
             login_menu();
         }
-        else if (choice == 2)
+        else if (choice == "2")
         {
             cout << "Welcome Visitor!";
             visitor_menu();
         }
-        else if (choice == 3)
+        else if (choice == "3")
         {
             cout << "Welcome Admin!";
             admin_menu();

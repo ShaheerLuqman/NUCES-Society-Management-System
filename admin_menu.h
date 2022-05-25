@@ -1,7 +1,7 @@
 #include <sstream>
 void admin_menu()
 {
-    int choice;
+    string choice;
     while (1)
     {
         system("cls");
@@ -13,18 +13,18 @@ void admin_menu()
              << "   0. Back\n"
              << "Your Input: ";
         cin >> choice;
-        if (choice == 0)
+        if (choice == "0")
         {
             return;
         }
-        else if (choice == 1)
+        else if (choice == "1")
         {
             society test;
             test.NewSociety();
             add_society_account_file(test);
             system("pause");
         }
-        else if (choice == 2)
+        else if (choice == "2")
         {
             int ch;
             fstream f("society.csv", ios::in);
@@ -66,7 +66,7 @@ void admin_menu()
                     system("pause");
             }
         }
-        else if (choice == 3)
+        else if (choice == "3")
         {
             string temp;
             cout << "Enter the name of event: ";

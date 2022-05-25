@@ -180,7 +180,7 @@ society retrieve_society_account_file(string fname)
 };
 void society_menu(society t)
 {
-    int choice;
+    string choice;
     system("cls");
     while (1)
     {
@@ -194,28 +194,28 @@ void society_menu(society t)
              << "   0. Back\n"
              << "Your Input: ";
         cin >> choice;
-        if (choice == 0)
+        if (choice == "0")
         {
             return;
         }
-        else if (choice == 1)
+        else if (choice == "1")
         {
             t.display_society();
             system("pause");
         }
-        else if (choice == 2)
+        else if (choice == "2")
         {
             t.add_new_member();
             add_society_account_file(t);
             system("pause");
         }
-        else if (choice == 3)
+        else if (choice == "3")
         {
             t.add_new_event();
             add_society_account_file(t);
             system("pause");
         }
-        else if (choice == 4)
+        else if (choice == "4")
         {
             display_all_applications(t.get_society_name());
         }

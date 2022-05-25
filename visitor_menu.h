@@ -7,7 +7,7 @@ registeration form
 
 void visitor_menu()
 {
-    int choice;
+    string choice;
     while (1)
     {
         system("cls");
@@ -21,31 +21,31 @@ void visitor_menu()
              << "   0. Back\n"
              << "Your Input: ";
         cin >> choice;
-        if (choice == 0)
+        if (choice == "0")
         {
             return;
         }
-        else if (choice == 1)
+        else if (choice == "1")
         {
             system("cls");
             display_society_details();
         }
-        else if (choice == 2)
+        else if (choice == "2")
         {
             system("cls");
             display_past_events();
         }
-        else if (choice == 3)
+        else if (choice == "3")
         {
             system("cls");
             display_ongoing_events();
         }
-        else if (choice == 4)
+        else if (choice == "4")
         {
             system("cls");
             display_future_events();
         }
-        else if (choice == 5)
+        else if (choice == "5")
         {
             system("cls");
             display_notifications();

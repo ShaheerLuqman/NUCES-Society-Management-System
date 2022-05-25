@@ -12,8 +12,6 @@ public:
 
      void get_event_data()
      {
-          // cout << string(50, '~') << endl;
-          // cout << "Enter Event Details\n";
           cout << "Enter Event Name : ";
           fflush(stdin);
           getline(cin, event_name);
@@ -22,11 +20,8 @@ public:
           getline(cin, event_description);
           cout << "Enter Event Date\n";
           event_date.inputdate();
-          // cout << string(50, '~') << endl;
      }
      string get_event_name() { return event_name; }
-     // friend void visitor_menu();
-     // friend void member_menu();
      friend void add_event_file(Events &eve);
      friend Events retrieve_events_file(string evename);
      friend void display_upcoming_events();
@@ -35,7 +30,6 @@ public:
      friend void display_past_events();
      void display_event_data()
      {
-          // cout << string(50, '~') << endl;
           cout << "\nEvent Name: " << event_name
                << "\nEvent Description: " << event_description
                << "\nEvent Date: ";
@@ -56,7 +50,6 @@ public:
 
 void add_event_file(Events &eve)
 {
-
      fstream f("events.csv", ios::app);
      if (!f.is_open())
      {
@@ -120,6 +113,7 @@ Events retrieve_events_file(string evename)
 
 void display_upcoming_events()
 {
+     system("cls");
      fstream f;
      f.open("events.csv", ios::in);
 

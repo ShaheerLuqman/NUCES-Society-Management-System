@@ -109,7 +109,7 @@ Faculty retrieve_faculty_account_file(string user, string pass)
 
 int login_menu()
 {
-    int choice;
+    string choice;
     string name, password, inName, inPassword;
 
     while (1)
@@ -121,31 +121,31 @@ int login_menu()
              << "Your Input: ";
         cin >> choice;
 
-        if (choice == 0)
+        if (choice == "0")
         {
             return 0;
         }
-        else if (choice == 1) // Register
+        else if (choice == "1") // Register
         {
             cout << "Enter number which describes you! " << endl
                  << "1. Student\n"
                  << "2. Faculty\n"
                  << "Your choice: ";
             cin >> choice;
-            if (choice == 1)
+            if (choice == "1")
             {
                 Student std;
                 std.Account_register();
                 add_student_account_file(std);
             }
-            else if (choice == 2)
+            else if (choice == "2")
             {
                 Faculty fac;
                 fac.Account_register();
                 add_faculty_account_file(fac);
             }
         }
-        else if (choice == 2) // Login
+        else if (choice == "2") // Login
         {
             cout << "\n*********** Account Login ***********\n"
                  << "Enter Username: ";
