@@ -4,6 +4,8 @@
 #include <fstream>
 #include <Windows.h>
 #include <cstdlib>
+#include <cstdio>
+
 using namespace std;
 
 #include "accounts.h"
@@ -13,7 +15,6 @@ using namespace std;
 #include "society.h"
 #include "admin_menu.h"
 #include "visitor_menu.h"
-
 #include "member_menu.h"
 #include "register&login.h"
 

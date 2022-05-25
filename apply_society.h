@@ -90,9 +90,9 @@ public:
         {
             cout << "\nHow many semesters have you worked in any of the Society: ";
             cin >> past_experience;
-            if (past_experience > 0 && past_experience < 9)
+            if (past_experience >= 0 && past_experience < 9)
                 break;
-            cout << "Enter value from 1 to 8" << endl;
+            cout << "Enter value from 0 to 8" << endl;
         }
         get_skills();
     }
@@ -102,8 +102,8 @@ public:
         cout << "Society Applying to: " << society_name << endl
              << "Past Experience (Number of Semesters): " << past_experience << endl
              << "Communications Skill Rating (out of 5): " << communication_skill << endl
-             << "Management Skills Rating (out of 5): " << communication_skill << endl
-             << "Interpersonal Skills Rating (out of 5): " << communication_skill << endl;
+             << "Management Skills Rating (out of 5): " << management_skill << endl
+             << "Interpersonal Skills Rating (out of 5): " << interpersonal_skill << endl;
     }
     void add_application_file()
     {

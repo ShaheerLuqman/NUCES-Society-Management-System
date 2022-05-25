@@ -27,22 +27,27 @@ void visitor_menu()
         }
         else if (choice == 1)
         {
+            system("cls");
             display_society_details();
         }
         else if (choice == 2)
         {
+            system("cls");
             display_past_events();
         }
         else if (choice == 3)
         {
+            system("cls");
             display_ongoing_events();
         }
         else if (choice == 4)
         {
+            system("cls");
             display_future_events();
         }
         else if (choice == 5)
         {
+            system("cls");
             display_notifications();
         }
     }
