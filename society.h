@@ -233,7 +233,7 @@ void display_society_details()
     }
     else
     {
-        cout << "\nPress\n";
+        cout << "Press the number of Society you want to see details of\n";
         int i = 0;
         string temp;
         while (!f.eof())
@@ -255,7 +255,41 @@ void display_society_details()
         }
         f.close();
         society t = retrieve_society_account_file(temp);
+        system("cls");
         t.display_society();
         system("pause");
     }
 }
+// void delete_society(string sname)
+// {
+//     fstream f("society.csv", ios::in);
+//     int count = -1;
+//     string line;
+//     society t(retrieve_society_account_file(sname));
+//     while (!f.eof())
+//     {
+//         getline(f, line);
+//         count++;
+//     }
+//     f.close();
+//     fstream f("society.csv", ios::in);
+//     string name[count];
+//     for (int i = 0; i < count; i++)
+//     {
+//         getline(f, line);
+//         if (line != t.get_society_name())
+//             name[i] = line;
+//     }
+//     f.close();
+//     string file_name = "society_" + t.get_society_name() + ".csv";
+//     int count = file_name.length();
+//     char fname[count] = file_name;
+//     // char fname[20] = file_name;
+//     transform(file_name.begin(), file_name.end(), file_name.begin(), ::tolower);
+//     for (int i = 0; i < file_name.length(); i++)
+//     {
+//         if (file_name[i] == ' ')
+//             file_name[i] = '_';
+//     }
+//     remove(file_name);
+// }
