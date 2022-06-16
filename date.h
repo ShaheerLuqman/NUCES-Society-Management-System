@@ -81,11 +81,11 @@ public:
 int compare_date(date &d1, date &d2)
 {
     if (d1.getDay() == d2.getDay() && d1.getMonth() == d2.getMonth() && d1.getYear() == d2.getYear())
-        return 1;
+        return 1; // d1=d2
     else if (d1.getYear() > d2.getYear())
-        return 2;
+        return 2; // d1 > d2
     else if (d1.getYear() < d2.getYear())
-        return 3;
+        return 3; // d1 < d2
     else if (d1.getYear() == d2.getYear())
     {
         if (d1.getMonth() > d2.getMonth())

@@ -40,8 +40,9 @@ public:
              << "\nNumber Of Events: " << number_of_events
              << "\nNumber Of Members: " << number_of_members
              << "\n\nEvents: \n";
-        for (int i = 0; i < number_of_events; i++)
-            cout << "   " << i + 1 << ". " << event_names[i] << endl;
+        display_events_of_society();
+        // for (int i = 0; i < number_of_events; i++)
+        //     cout << "   " << i + 1 << ". " << event_names[i] << endl;
         cout << endl
              << setw(32) << left << "Member Names"
              << setw(32) << left << "Member Role"
@@ -61,6 +62,14 @@ public:
     {
         for (int i = 0; i < number_of_events; i++)
             cout << event_names[i] << endl;
+    }
+    void display_events_of_society()
+    {
+        for (int i = 0; i < number_of_events; i++)
+        {
+            Events t = retrieve_events_file(event_names[i]);
+            t.display_event_data();
+        }
     }
     void add_new_member()
     {
